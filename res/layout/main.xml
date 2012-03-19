@@ -1,12 +1,158 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/tableLayout1"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="vertical" >
+    android:background="#000080" 
+ 	android:stretchColumns="0,1" android:paddingTop="10dp">
 
-    <TextView
-        android:layout_width="fill_parent"
+    <TableRow
+        android:id="@+id/tableRow1"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/hello" />
+        android:layout_gravity="center" 
+        android:layout_marginTop="40dp" 
+        android:paddingBottom="20dp">
 
-</LinearLayout>
+        <LinearLayout
+			    android:layout_width="fill_parent"
+			    android:layout_height="wrap_content"
+			    android:orientation="vertical" >
+   
+	        <ImageButton
+	            android:id="@+id/profile"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:src="@drawable/ic_launcher"
+	            android:layout_gravity="center" />
+	        
+	          <TextView
+	            android:id="@+id/profile_text"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:text="Profile"
+	            android:textAppearance="?android:attr/textAppearanceMedium"
+	            android:layout_gravity="center" />
+          </LinearLayout>
+
+         <LinearLayout
+		    android:layout_width="fill_parent"
+		    android:layout_height="wrap_content"
+		    android:orientation="vertical" >
+	          
+	        <ImageButton
+	            android:id="@+id/my_pool"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:src="@drawable/ic_launcher"
+	            android:layout_gravity="center" />
+	        
+	        <TextView
+	            android:id="@+id/mp_text"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:text="MyPool"
+	            android:textAppearance="?android:attr/textAppearanceMedium"
+	            android:layout_gravity="center" />
+        </LinearLayout>
+        
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/tableRow2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center" android:paddingBottom="20dp" android:paddingTop="20dp">
+         
+        <LinearLayout
+		    android:layout_width="fill_parent"
+		    android:layout_height="wrap_content"
+		    android:orientation="vertical" >
+
+	        <ImageButton
+	            android:id="@+id/find_pool"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:src="@drawable/ic_launcher"
+	            android:layout_gravity="center" />
+	        
+	        <TextView
+	            android:id="@+id/fp_text"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:text="FindPool"
+	            android:textAppearance="?android:attr/textAppearanceMedium"
+	            android:layout_gravity="center" />
+		</LinearLayout>
+        <LinearLayout
+		    android:layout_width="fill_parent"
+		    android:layout_height="wrap_content"
+		    android:orientation="vertical" >
+		    
+	        <ImageButton
+	            android:id="@+id/messages"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:src="@drawable/ic_launcher"
+	            android:layout_gravity="center" />
+	        
+	        <TextView
+	            android:id="@+id/messages_text"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:text="Messages"
+	            android:textAppearance="?android:attr/textAppearanceMedium"
+	            android:layout_gravity="center" />
+        </LinearLayout>
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/tableRow3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+		android:layout_gravity="center" android:paddingTop="20dp">
+
+        <LinearLayout
+		    android:layout_width="fill_parent"
+		    android:layout_height="wrap_content"
+		    android:orientation="vertical" >
+		    
+	        <ImageButton
+	            android:id="@+id/rewards"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:src="@drawable/ic_launcher"
+	            android:layout_gravity="center" />
+	        
+	        <TextView
+	            android:id="@+id/rewards_text"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:text="Rewards"
+	            android:textAppearance="?android:attr/textAppearanceMedium"
+	            android:layout_gravity="center" />
+        </LinearLayout>
+        
+        <LinearLayout
+		    android:layout_width="fill_parent"
+		    android:layout_height="wrap_content"
+		    android:orientation="vertical" >
+		    
+	        <ImageButton
+	            android:id="@+id/route"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:src="@drawable/ic_launcher"
+	            android:layout_gravity="center" />
+	        
+	        <TextView
+	            android:id="@+id/route_text"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:text="Route"
+	            android:textAppearance="?android:attr/textAppearanceMedium"
+	            android:layout_gravity="center" />
+        </LinearLayout>
+
+    </TableRow>
+</TableLayout>
