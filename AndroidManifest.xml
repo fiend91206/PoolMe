@@ -12,14 +12,67 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@android:style/Theme.NoTitleBar" >
+        
+        <uses-library android:name="com.google.android.maps" />
+        
         <activity
             android:label="@string/app_name"
-            android:name=".PoolMeActivity" >
+            android:name=".Main"
+            android:screenOrientation="portrait" >
             <intent-filter >
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        
+        <activity
+            android:name=".Create_Account"
+		    android:screenOrientation="portrait">
+        </activity>
+        
+        <activity
+            android:name=".FB_Integration"
+		    android:screenOrientation="portrait">
+        </activity>  
+        
+        <activity
+            android:name=".Find_Pool"
+		    android:screenOrientation="portrait">
+        </activity>  
+        
+        <activity
+            android:name=".Login"
+		    android:screenOrientation="portrait">
+        </activity>  
+        
+        <activity
+            android:name=".Messages"
+		    android:screenOrientation="portrait">
+        </activity>  
+        
+        <activity
+            android:name=".My_Pool"
+		    android:screenOrientation="portrait">
+        </activity>  
+        
+        <activity
+            android:name=".New_Message"
+		    android:screenOrientation="portrait">
+        </activity>  
+        
+        <activity
+            android:name=".Profile_Contact_Submenu"
+		    android:screenOrientation="portrait">
+        </activity>  
+        
+        <activity
+            android:name=".Profile_Travel_Submenu"
+		    android:screenOrientation="portrait">
+        </activity>  
+        
+        <activity
+            android:name=".Profile_Vehicle_Subemnu"
+		    android:screenOrientation="portrait">
         </activity>
     </application>
 
