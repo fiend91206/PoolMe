@@ -51,7 +51,7 @@
 	            android:id="@+id/mp_text"
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
-	            android:text="MyPool"
+	            android:text="My Pool"
 	            android:textAppearance="?android:attr/textAppearanceMedium"
 	            android:layout_gravity="center" />
         </LinearLayout>
@@ -80,7 +80,7 @@
 	            android:id="@+id/fp_text"
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
-	            android:text="FindPool"
+	            android:text="Find Pool"
 	            android:textAppearance="?android:attr/textAppearanceMedium"
 	            android:layout_gravity="center" />
 		</LinearLayout>

@@ -61,6 +61,11 @@
         </activity>  
         
         <activity
+            android:name=".Profile"
+            android:screenOrientation="portrait">
+        </activity>
+        
+        <activity
             android:name=".Profile_Contact_Submenu"
 		    android:screenOrientation="portrait">
         </activity>  
@@ -74,6 +79,16 @@
             android:name=".Profile_Vehicle_Subemnu"
 		    android:screenOrientation="portrait">
         </activity>
+        
+        <activity 
+            android:name=".Rewards"
+            android:screenOrientation="portrait">
+        </activity>
+        
+       	<activity
+       	    android:name=".Route"
+       	    android:screenOrientation="portrait">
+       	</activity>
     </application>
 
 </manifest>
