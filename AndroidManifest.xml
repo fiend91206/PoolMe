@@ -86,7 +86,7 @@
         </activity>
         
        	<activity
-       	    android:name=".Route"
+       	    android:name=".domain.Route"
        	    android:screenOrientation="portrait">
        	</activity>
     </application>
