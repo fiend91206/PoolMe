@@ -1,8 +1,13 @@
 package pool.me.domain;
 
-
 import com.google.android.maps.GeoPoint;
 
+/**
+ * Class extends GeoPoint. Represents a single point on the map 
+ * (an action, or a route checkpoint, or an information marker)
+ * @author Shashank
+ *
+ */
 public class Checkpoint extends GeoPoint implements Comparable{
 	
 	public static enum PointType  {GENERAL, POOL_START, POOL_END, PICKUP, DROPOFF, SOURCE, DESTINATION, ROUTE_POINT};
