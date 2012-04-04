@@ -9,7 +9,7 @@ import android.view.View.OnClickListener;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
-public class Main extends Activity {
+public class Main extends Activity implements View.OnClickListener{
 	private View profile, myPool, findPool, messages, rewards, route;
 	
 	public void onCreate(Bundle savedInstanceState) {
@@ -23,19 +23,17 @@ public class Main extends Activity {
         rewards = (ImageButton)findViewById(R.id.rewards);
         route = (ImageButton)findViewById(R.id.route);
         
-        profile.setOnClickListener(new View.OnClickListener() {
-			public void onClick(View v) {
-				startActivity(new Intent());
-				Toast toast = Toast.makeText(getApplicationContext(), "Profile", Toast.LENGTH_LONG);
-				toast.show();
-			}
-		});     
+        profile.setOnClickListener((OnClickListener) this);     
+        
         myPool.setOnClickListener((OnClickListener) this);
         findPool.setOnClickListener((OnClickListener) this);
         messages.setOnClickListener((OnClickListener) this);
         rewards.setOnClickListener((OnClickListener) this);
         route.setOnClickListener((OnClickListener) this);
+        
 	}
+	
+	
 	
 	public void onClick(View view){
 		if (view == this.profile){

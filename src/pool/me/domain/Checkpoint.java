@@ -12,6 +12,8 @@ public class Checkpoint extends GeoPoint implements Comparable{
 	
 	public static enum PointType  {GENERAL, POOL_START, POOL_END, PICKUP, DROPOFF, SOURCE, DESTINATION, ROUTE_POINT};
 	
+	private String address;
+	private int zipcode;
 	private String description;
 	private PointType type;
 	private int order;
@@ -83,6 +85,22 @@ public class Checkpoint extends GeoPoint implements Comparable{
 
 	public void setReached(boolean reached) {
 		this.reached = reached;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public int getZipcode() {
+		return zipcode;
+	}
+
+	public void setZipcode(int zipcode) {
+		this.zipcode = zipcode;
 	}
 	
 	
