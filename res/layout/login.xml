@@ -8,8 +8,8 @@
     <ImageView
         android:id="@+id/logo"
         android:layout_width="257dp"
-        android:layout_height="wrap_content"
-        android:src="@drawable/poolme" 
+        android:layout_height="250px"
+        android:src="@drawable/logo3" 
         android:layout_gravity="center" 
         android:layout_marginTop="20dp"/>
 
