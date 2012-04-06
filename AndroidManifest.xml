@@ -90,5 +90,6 @@
        	    android:screenOrientation="portrait">
        	</activity>
     </application>
-
+	<uses-permission android:name="android.permission.SEND_SMS">
+	    </uses-permission>
 </manifest>
