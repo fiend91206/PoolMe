@@ -23,8 +23,7 @@ public class Main extends Activity implements View.OnClickListener{
         rewards = (ImageButton)findViewById(R.id.rewards);
         route = (ImageButton)findViewById(R.id.route);
         
-        profile.setOnClickListener((OnClickListener) this);     
-        
+        profile.setOnClickListener((OnClickListener) this);      
         myPool.setOnClickListener((OnClickListener) this);
         findPool.setOnClickListener((OnClickListener) this);
         messages.setOnClickListener((OnClickListener) this);
@@ -32,8 +31,6 @@ public class Main extends Activity implements View.OnClickListener{
         route.setOnClickListener((OnClickListener) this);
         
 	}
-	
-	
 	
 	public void onClick(View view){
 		if (view == this.profile){
