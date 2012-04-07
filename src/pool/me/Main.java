@@ -9,8 +9,8 @@ import android.view.View.OnClickListener;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
-public class Main extends Activity implements View.OnClickListener{
-	private View profile, myPool, findPool, messages, rewards, route;
+public class Main extends Activity implements OnClickListener{
+private View profile, myPool, findPool, messages, rewards, route;
 	
 	public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,7 +24,6 @@ public class Main extends Activity implements View.OnClickListener{
         route = (ImageButton)findViewById(R.id.route);
         
         profile.setOnClickListener((OnClickListener) this);      
-        myPool.setOnClickListener((OnClickListener) this);
         findPool.setOnClickListener((OnClickListener) this);
         messages.setOnClickListener((OnClickListener) this);
         rewards.setOnClickListener((OnClickListener) this);
@@ -49,4 +48,5 @@ public class Main extends Activity implements View.OnClickListener{
 			this.startActivity(new Intent(this, Route.class));
 		}
 	}
+	
 }
