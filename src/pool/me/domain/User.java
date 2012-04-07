@@ -29,8 +29,9 @@ public class User {
 	
 	/*Profile Information*/
 	private String emailAddress;
-	private int contactNumber;
+	private String pass;
 	
+	private int contactNumber;
 	private String aboutMe;
 	private Images picture;	
 	private int rewardPoints;

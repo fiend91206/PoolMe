@@ -11,16 +11,18 @@ import android.widget.Toast;
 
 public class Login extends Activity implements OnClickListener{
 	
-	private View regularLogin, createAccount;
+	private View regularLogin, facebookLogin, createAccount;
 	
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.login);
 		regularLogin = findViewById(R.id.login);
 		createAccount = findViewById(R.id.createAccount);
+		facebookLogin = findViewById(R.id.facebookLogin);
 		
 		regularLogin.setOnClickListener(this);
 		createAccount.setOnClickListener(this);
+		facebookLogin.setOnClickListener(this);
 		
 	}
 	
@@ -30,6 +32,10 @@ public class Login extends Activity implements OnClickListener{
 		{
 			//Authentication code goes here.
 			startActivity(new Intent(this, Main.class));
+			
+		} else if(v == facebookLogin)
+		{
+			startActivity(new Intent(this,FB_Integration.class));
 			
 		} else if(v == this.createAccount)
 		{
