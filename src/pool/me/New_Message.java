@@ -55,7 +55,6 @@ public class New_Message extends Activity implements OnClickListener{
         sms.sendTextMessage(_messageNumber, null, messageText, sentPI, null);
 	}
 
-	@Override
 	public void onClick(View v) {
 		this.sendMessage(v);
 	}
