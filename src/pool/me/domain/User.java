@@ -38,6 +38,8 @@ public class User {
 
 	private boolean willingToDrive;
 	
+	private int departureTime[], returnTime[];
+	
 	
 	
 	
