@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.ImageButton;
 
 public class Messages extends Activity implements OnClickListener{
@@ -18,6 +19,7 @@ public class Messages extends Activity implements OnClickListener{
        this.newMessageButton =  (ImageButton)findViewById(R.id.newMessageButton);
         
        newMessageButton.setOnClickListener((OnClickListener) this); 
+       
 	}
 	
 	public void onClick(View view){

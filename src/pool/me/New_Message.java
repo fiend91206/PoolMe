@@ -9,10 +9,12 @@ import android.content.IntentFilter;
 import android.os.Bundle;
 import android.telephony.SmsManager;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.AutoCompleteTextView;
+import android.widget.Button;
 import android.widget.Toast;
 
-public class New_Message extends Activity{
+public class New_Message extends Activity implements OnClickListener{
 
 	AutoCompleteTextView messageNumber;
 	
@@ -21,6 +23,9 @@ public class New_Message extends Activity{
         setContentView(R.layout.new_message);
 	
         messageNumber = (AutoCompleteTextView)findViewById(R.id.to);
+        
+        final Button button = (Button) findViewById(R.id.sendMessage);
+        button.setOnClickListener((OnClickListener) this);
 	}
 	
 	public void sendMessage(View v)
@@ -48,5 +53,10 @@ public class New_Message extends Activity{
         }, new IntentFilter(sent));
         SmsManager sms = SmsManager.getDefault();
         sms.sendTextMessage(_messageNumber, null, messageText, sentPI, null);
+	}
+
+	@Override
+	public void onClick(View v) {
+		this.sendMessage(v);
 	}
 }
