@@ -19,14 +19,29 @@
 		    android:background="@drawable/background" >
 		
 		    <TextView
-		        android:id="@+id/nameText"
+		        android:id="@+id/first_nameText"
 		        android:layout_width="wrap_content"
 		        android:layout_height="wrap_content"
-		        android:text="Your Name:"
+		        android:text="First Name:"
 		        android:textAppearance="?android:attr/textAppearanceMedium" />
 		
 		    <EditText
-		        android:id="@+id/name"
+		        android:id="@+id/first_name"
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:inputType="textPersonName" >
+		
+		        <requestFocus />
+		    </EditText>
+		    <TextView
+		        android:id="@+id/last_nameText"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:text="Last Name:"
+		        android:textAppearance="?android:attr/textAppearanceMedium" />
+		
+		    <EditText
+		        android:id="@+id/last_name"
 		        android:layout_width="fill_parent"
 		        android:layout_height="wrap_content"
 		        android:inputType="textPersonName" >
@@ -148,7 +163,7 @@
 		        android:id="@+id/phoneText"
 		        android:layout_width="wrap_content"
 		        android:layout_height="wrap_content"
-		        android:text="Phone Number:"
+		        android:text="Phone Number: (Optional)"
 		        android:textAppearance="?android:attr/textAppearanceMedium" />
 		
 		    <EditText
@@ -156,6 +171,18 @@
 		        android:layout_width="fill_parent"
 		        android:layout_height="wrap_content"
 		        android:inputType="phone" />
+		    
+		    <TextView
+		        android:id="@+id/aboutMe_Text"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:text="About Me: (Optional)"
+		        android:textAppearance="?android:attr/textAppearanceMedium" />
+		    <EditText
+		        android:id="@+id/aboutMe"
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:inputType="text"/> "
 		    
 		</LinearLayout>
 	</ScrollView>
