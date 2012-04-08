@@ -182,18 +182,9 @@
 		        android:id="@+id/aboutMe"
 		        android:layout_width="fill_parent"
 		        android:layout_height="wrap_content"
-		        android:inputType="text"/> "
+		        android:inputType="text"/> 
 		    
-		</LinearLayout>
-	</ScrollView>
-	
-	<LinearLayout
-	        android:layout_width="fill_parent"
-	        android:layout_height="wrap_content"
-	        android:orientation="horizontal" 
-	        android:layout_marginTop="10dp">
-	
-	        <Button
+		    <Button
 	            android:id="@+id/cancel"
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
@@ -205,7 +196,9 @@
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
 	            android:layout_weight="0.15"
-	            android:text="Submit" />
+	            android:text="Submit" />"
+		    
+		</LinearLayout>
+	</ScrollView>
 	
-	</LinearLayout>
 </LinearLayout>

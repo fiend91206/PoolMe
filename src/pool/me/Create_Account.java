@@ -21,7 +21,8 @@ public class Create_Account extends Activity implements OnClickListener{
 		setContentView(R.layout.create_account);
 		submitButton = findViewById(R.id.submit);
 		cancelButton = findViewById(R.id.cancel);
-		
+		submitButton.setOnClickListener(this);
+		cancelButton.setOnClickListener(this);
 	}
 	
 	public ArrayList<String> populateUser(User u)
@@ -53,22 +54,18 @@ public class Create_Account extends Activity implements OnClickListener{
 		} else {
 			u.setEmailAddress(s);
 		}
-		
-		s = ((EditText)findViewById(R.id.first_name)).getText().toString();
-		if((s.length() < 1)||(s == null))
-		{
-			arr.add("First Name");
-		} else {
-			u.setFirstName(s);
-		}
 
 		String pass2;
 		s = ((EditText)findViewById(R.id.password)).getText().toString();
 		pass2 = ((EditText)findViewById(R.id.passwordConfirm)).getText().toString();
-		if(s != pass2)
+		
+		if (s.equals(null)||pass2.equals(null))
 		{
-			arr.add("Password fields do not patch");
-		} else {
+			arr.add("Password field is empty");
+		}  else if(!s.equals(pass2))
+		{
+			arr.add("Password fields do not match");
+		}else {
 			u.setPass(s);
 		}
 		
@@ -148,3 +145,4 @@ public class Create_Account extends Activity implements OnClickListener{
 	}
 
 }
+
