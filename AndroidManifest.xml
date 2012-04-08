@@ -27,6 +27,10 @@
             android:name=".Create_Account"
 		    android:screenOrientation="portrait">
         </activity>
+        <activity
+        	android:name=".Create_Account_2"
+        	android:screenOrientation="portrait">
+        </activity>
         
         <activity
             android:name=".FB_Integration"

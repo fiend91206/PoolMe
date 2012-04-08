@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:background="@drawable/background" >
+
+		
+		    <TextView
+		        android:id="@+id/strAddr_text"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:text="Street Address:"
+		        android:textAppearance="?android:attr/textAppearanceMedium" />
+		
+		    <EditText
+		        android:id="@+id/stAddr"
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:inputType="textPostalAddress" />
+		    
+	
+		    <TextView
+		        android:id="@+id/phoneText"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:text="Phone Number: (Optional)"
+		        android:textAppearance="?android:attr/textAppearanceMedium" />
+		
+		    <EditText
+		        android:id="@+id/phone"
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:inputType="phone" />
+		    
+		    <TextView
+		        android:id="@+id/aboutMe_Text"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:text="About Me: (Optional)"
+		        android:textAppearance="?android:attr/textAppearanceMedium" />
+		    <EditText
+		        android:id="@+id/aboutMe"
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:inputType="text"/> 
+		    
+		   	    	<LinearLayout
+		    	    android:layout_width="fill_parent"
+		    	    android:layout_height="match_parent"
+		    	    android:layout_marginTop="50px"
+		    	    android:gravity="bottom" >
+
+		    <Button
+	            android:id="@+id/ca_back"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_weight="0.15"
+	            android:text="Back" />
+	
+	        <Button
+	            android:id="@+id/submit_2"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_weight="0.15"
+	            android:text="Submit" />"
+		    </LinearLayout>
+
+	
+</LinearLayout>

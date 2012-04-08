@@ -6,17 +6,7 @@
     android:orientation="vertical"
     android:background="@drawable/background" >
 
-	<ScrollView
-	    android:id="@+id/scrollView1"
-	    android:layout_width="fill_parent"
-	    android:layout_height="wrap_content"
-	    android:background="@drawable/background" >
-	    
-		<LinearLayout 
-		    android:layout_width="fill_parent"
-		    android:layout_height="fill_parent"
-		    android:orientation="vertical"
-		    android:background="@drawable/background" >
+	
 		
 		    <TextView
 		        android:id="@+id/first_nameText"
@@ -87,104 +77,14 @@
 		        android:layout_width="fill_parent"
 		        android:layout_height="wrap_content"
 		        android:inputType="textPassword" />
-		
-		    <TextView
-		        android:id="@+id/strAddr_text"
-		        android:layout_width="wrap_content"
-		        android:layout_height="wrap_content"
-		        android:text="Street Address:"
-		        android:textAppearance="?android:attr/textAppearanceMedium" />
-		
-		    <EditText
-		        android:id="@+id/stAddr"
-		        android:layout_width="fill_parent"
-		        android:layout_height="wrap_content"
-		        android:inputType="textPostalAddress" />
-		    
-		<!-- City, State Zip Text 
-		    
-			<LinearLayout
-			    android:layout_width="fill_parent"
-			    android:layout_height="wrap_content"
-			    android:orientation="horizontal" >
-		        
-			     <TextView
-			        android:id="@+id/city_text"
-			        android:layout_width="wrap_content"
-			        android:layout_height="wrap_content"
-			        android:text="City:"
-			        android:textAppearance="?android:attr/textAppearanceMedium" />
-			     
-			      <TextView
-			        android:id="@+id/state_text"
-			        android:layout_width="wrap_content"
-			        android:layout_height="wrap_content"
-			        android:text="State:"
-			        android:textAppearance="?android:attr/textAppearanceMedium" />
-			      
-			       <TextView
-			        android:id="@+id/zip_text"
-			        android:layout_width="wrap_content"
-			        android:layout_height="wrap_content"
-			        android:text="Zip:"
-			        android:textAppearance="?android:attr/textAppearanceMedium" />
-		        
-			</LinearLayout>
-		
-		 City, State Zip 
-		
-		    <LinearLayout
-		        android:layout_width="fill_parent"
-		        android:layout_height="wrap_content"
-		        android:orientation="horizontal" >
-				
-			    <EditText
-			        android:id="@+id/city"
-			        android:layout_width="80dp"
-			        android:layout_height="wrap_content"
-			        android:inputType="textPostalAddress" />
-			
-			    <EditText
-			        android:id="@+id/state"
-			        android:layout_width="80dp"
-			        android:layout_height="wrap_content"
-			        android:inputType="textPostalAddress" />
-			
-			    <EditText
-			        android:id="@+id/zip"
-			        android:layout_width="80dp"
-			        android:layout_height="wrap_content"
-			        android:inputType="textPostalAddress" />
-		    </LinearLayout>
-		    
-		    -->
-		
-		    <TextView
-		        android:id="@+id/phoneText"
-		        android:layout_width="wrap_content"
-		        android:layout_height="wrap_content"
-		        android:text="Phone Number: (Optional)"
-		        android:textAppearance="?android:attr/textAppearanceMedium" />
-		
-		    <EditText
-		        android:id="@+id/phone"
-		        android:layout_width="fill_parent"
-		        android:layout_height="wrap_content"
-		        android:inputType="phone" />
-		    
-		    <TextView
-		        android:id="@+id/aboutMe_Text"
-		        android:layout_width="wrap_content"
-		        android:layout_height="wrap_content"
-		        android:text="About Me: (Optional)"
-		        android:textAppearance="?android:attr/textAppearanceMedium" />
-		    <EditText
-		        android:id="@+id/aboutMe"
-		        android:layout_width="fill_parent"
-		        android:layout_height="wrap_content"
-		        android:inputType="text"/> 
-		    
-		    <Button
+		    	
+		    	<LinearLayout
+		    	    android:layout_width="fill_parent"
+		    	    android:layout_height="match_parent"
+		    	    android:layout_marginTop="50px"
+		    	    android:gravity="bottom" >
+
+	    <Button
 	            android:id="@+id/cancel"
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
@@ -192,13 +92,16 @@
 	            android:text="Cancel" />
 	
 	        <Button
-	            android:id="@+id/submit"
+	            android:id="@+id/next"
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
 	            android:layout_weight="0.15"
-	            android:text="Submit" />"
+	            android:text="Next" />	    
+	</LinearLayout>
+	
 		    
-		</LinearLayout>
-	</ScrollView>
+		    
+		
+
 	
 </LinearLayout>

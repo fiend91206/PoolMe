@@ -3,6 +3,7 @@ package pool.me;
 import java.util.ArrayList;
 
 import pool.me.domain.User;
+import pool.me.services.Session;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -14,21 +15,32 @@ import android.widget.EditText;
 
 public class Create_Account extends Activity implements OnClickListener{
 	
-	private View submitButton, cancelButton;
+	public static final int MIN_PASS_LEN = 2;
+	private View submitButton, cancelButton, nextButton, backButton;
+	
+	private User u;
 	
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+			
 		setContentView(R.layout.create_account);
-		submitButton = findViewById(R.id.submit);
+		nextButton = findViewById(R.id.next);
 		cancelButton = findViewById(R.id.cancel);
-		submitButton.setOnClickListener(this);
-		cancelButton.setOnClickListener(this);
+		
+		cancelButton.setOnClickListener(this);		
+		nextButton.setOnClickListener(this);
+		
+		u = new User();
+		Session s = Session.getInstance();
+		s.setUser(u);
 	}
 	
-	public ArrayList<String> populateUser(User u)
+	
+	/*Validate information from the first page*/
+	public ArrayList<String> populateUser_first(User u)
 	{
 		
-		ArrayList<String> arr = new ArrayList();
+		ArrayList<String> arr = new ArrayList<String>();
 		String s;
 		
 		s = ((EditText)findViewById(R.id.first_name)).getText().toString();
@@ -59,44 +71,20 @@ public class Create_Account extends Activity implements OnClickListener{
 		s = ((EditText)findViewById(R.id.password)).getText().toString();
 		pass2 = ((EditText)findViewById(R.id.passwordConfirm)).getText().toString();
 		
-		if (s.equals(null)||pass2.equals(null))
+		if (s.equals("")||pass2.equals(""))
 		{
 			arr.add("Password field is empty");
 		}  else if(!s.equals(pass2))
 		{
 			arr.add("Password fields do not match");
-		}else {
+		} else if ((s.length()<MIN_PASS_LEN)||(pass2.length()<MIN_PASS_LEN))
+		{
+			arr.add("Password must be " + MIN_PASS_LEN + " characters long");
+		}
+		else {
 			u.setPass(s);
 		}
 		
-		s = ((EditText)findViewById(R.id.stAddr)).getText().toString();
-		if((s.length() < 1)||(s == null))
-		{
-			arr.add("Street Addres");
-		} else {
-			u.setSourceLocation(s);
-		}
-		
-		s = ((EditText)findViewById(R.id.phone)).getText().toString();
-		if(!((s.length() < 1)||(s == null)))
-		{
-			try
-			{
-				int n = Integer.parseInt(s);
-				u.setContactNumber(n);
-			} catch(Exception e)
-			{
-				arr.add("Invalid phone number");
-			}		
-			
-			
-		}
-		
-		s = ((EditText)findViewById(R.id.aboutMe)).getText().toString();
-		if(!((s == null)||(s.length() < 1)))
-		{
-			u.setAboutMe(s);
-		}
 		
 		if(arr.size() == 0)
 		{
@@ -108,16 +96,19 @@ public class Create_Account extends Activity implements OnClickListener{
 		
 		
 	}
+	
+	
 
 	public void onClick(View v) {
-		if(v == submitButton)
+		if(v == nextButton)
 		{
-			User u = new User();
-			ArrayList<String> arr = populateUser(u);
+			
+			ArrayList<String> arr = populateUser_first(u);
 			
 			if(arr == null)
 			{
-				startActivity(new Intent(this, Main.class));
+				
+				this.setContentView(R.layout.create_account_2);
 			} else
 			{
 				String s = "The following fields are required:\n";
@@ -136,10 +127,10 @@ public class Create_Account extends Activity implements OnClickListener{
 				
 			}
 			
-			
-		} else if(v == cancelButton)
+					
+		}else if(v == cancelButton)
 		{
-			
+			super.onBackPressed();
 		}
 		
 	}

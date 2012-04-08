@@ -1,6 +1,7 @@
 package pool.me;
 
 import pool.me.domain.Route;
+import pool.me.services.Session;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,6 +16,9 @@ public class Login extends Activity implements OnClickListener{
 	
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		
+		Session s = new Session();
+		
 		setContentView(R.layout.login);
 		regularLogin = findViewById(R.id.login);
 		createAccount = findViewById(R.id.createAccount);
