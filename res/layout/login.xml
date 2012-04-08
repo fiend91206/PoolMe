@@ -17,7 +17,7 @@
         android:id="@+id/uname_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="0dp"
         android:text="Username:"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_gravity="center" />
@@ -37,7 +37,7 @@
         android:layout_height="wrap_content"
         android:text="Password:"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         android:layout_gravity="center" />
     <EditText
         android:id="@+id/password"
@@ -57,17 +57,18 @@
 
 <Button
         android:id="@+id/facebookLogin"
-        android:layout_width="250dp"
+        android:layout_width="240dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="5dp"
-        android:text="Login using Facebook" />
+        android:layout_marginTop="15dp"
+        android:background="@drawable/facebook_login_button"
+        />
     <Button
         android:id="@+id/createAccount"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="15dp"
         android:text="Create New Account" />
 
 </LinearLayout>
