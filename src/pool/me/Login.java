@@ -17,7 +17,10 @@ public class Login extends Activity implements OnClickListener{
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
-		Session s = new Session();
+		if((Session.getInstance()).equals(null))
+		{
+			Session s = new Session();
+		}
 		
 		setContentView(R.layout.login);
 		regularLogin = findViewById(R.id.login);
@@ -36,10 +39,12 @@ public class Login extends Activity implements OnClickListener{
 		{
 			//Authentication code goes here.
 			startActivity(new Intent(this, Main.class));
+			finish();
 			
 		} else if(v == facebookLogin)
 		{
 			startActivity(new Intent(this,FB_Integration.class));
+			finish();
 			
 		} else if(v == this.createAccount)
 		{

@@ -92,6 +92,7 @@ public class Create_Account_2 extends Activity implements OnClickListener{
 			if(arr==null)
 			{
 				startActivity(new Intent(this, Main.class));
+				finish();
 			} else {
 				String s = "The following fields are required:\n";				
 				for(int i=0; i<arr.size(); i++)
