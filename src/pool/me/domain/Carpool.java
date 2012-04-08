@@ -10,8 +10,78 @@ import java.util.PriorityQueue;
  */
 public class Carpool {
 	
-	private ArrayList<User> users;
+	private ArrayList<String> membersEmail;
+	private String driverEmail;
 	private Route route;
+	private int capacity, id;
 	
+	public Carpool(){
+		this(new ArrayList<String>(), "", 0, new Route(), 0);
+	}
 
+	public Carpool(ArrayList<String> memberEmail){
+		this(memberEmail, "", 0, new Route(), 0);
+	}
+	
+	public Carpool(ArrayList<String> memberEmail, String dEmail){
+		this(memberEmail, dEmail, 0, new Route(), 0);
+	}
+	
+	public Carpool(ArrayList<String> memberEmail, String dEmail, int cap){
+		this(memberEmail, dEmail, cap, new Route(), 0);
+	}
+	
+	public Carpool(ArrayList<String> memberEmail, String demail, int cap, Route r){
+		this(memberEmail, demail, cap, r, 0);
+	}
+	
+	public Carpool(ArrayList<String> memberEmail, String demail, int cap, Route r, int i){
+		membersEmail = memberEmail;
+		driverEmail = demail;
+		capacity = cap;
+		id = i;
+		route = r;
+	}
+
+	public ArrayList<String> getMembersEmail() {
+		return membersEmail;
+	}
+
+	public void setMembersEmail(ArrayList<String> membersEmail) {
+		this.membersEmail = membersEmail;
+	}
+
+	public String getDriverEmail() {
+		return driverEmail;
+	}
+
+	public void setDriverEmail(String driverEmail) {
+		this.driverEmail = driverEmail;
+	}
+
+	public Route getRoute() {
+		return route;
+	}
+
+	public void setRoute(Route route) {
+		this.route = route;
+	}
+
+	public int getCapacity() {
+		return capacity;
+	}
+
+	public void setCapacity(int capacity) {
+		this.capacity = capacity;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+	
+	
 }

@@ -23,6 +23,15 @@ public class User {
 	
 	/*Carpool Information*/
 	private String sourceLocation; //Pickup and dropoff locations	
+	private String destLocation;
+	public String getDestLocation() {
+		return destLocation;
+	}
+
+	public void setDestLocation(String destLocation) {
+		this.destLocation = destLocation;
+	}
+
 	private ArrayList<Carpool> pools;
 	
 	/*Profile Information*/
