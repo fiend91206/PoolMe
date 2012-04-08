@@ -55,7 +55,13 @@ public class User {
 		this.emailAddress = emailAddress;
 		this.pass = pass;
 	}
+	public User(String emailAddress, String firstName, String lastName)
+	{
+		this.emailAddress = emailAddress;
+		this.firstName = firstName;
+		this.lastName = lastName;
 
+	}
 	public String getFirstName() {
 		return firstName;
 	}
