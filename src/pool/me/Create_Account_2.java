@@ -53,18 +53,17 @@ public class Create_Account_2 extends Activity implements OnClickListener{
 		}
 		
 		s = ((EditText)findViewById(R.id.phone)).getText().toString();
-		if(!((s.length() < 1)||(s == null)))
+		if(s.length()>1)
 		{
 			try
 			{
-				int n = Integer.parseInt(s);
+				long n = Long.parseLong(s);
 				u.setContactNumber(n);
 			} catch(Exception e)
 			{
-				arr.add("Invalid phone number");
+				arr.add("Invalid phone number. Error: " + e.toString());
 			}		
-			
-			
+						
 		}
 		
 		s = ((EditText)findViewById(R.id.aboutMe)).getText().toString();

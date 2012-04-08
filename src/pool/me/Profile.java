@@ -31,7 +31,7 @@ public class Profile extends Activity implements OnClickListener{
         {
         	TextView t;
         	t = (TextView)findViewById(R.id.profile_name);
-            t.setText("Full Name: " + u.getLastName() + ", " + u.getLastName());
+            t.setText("Full Name: " + u.getLastName() + ", " + u.getFirstName());
             
             t = (TextView)findViewById(R.id.profile_email);
             t.setText("Email:" + u.getEmailAddress());
@@ -50,7 +50,11 @@ public class Profile extends Activity implements OnClickListener{
 			builder.setMessage("Unable to obtain current User information. Please login again.");
 			builder.setNeutralButton("Ok", null);
 			builder.show();
-			startActivity(new Intent(null, Login.class));
+			
+			
+			
+			startActivity(new Intent(this, Login.class));
+			finish();
         }
         
         
@@ -62,7 +66,7 @@ public class Profile extends Activity implements OnClickListener{
 		
 		if(v==okButton)
 		{
-			super.onBackPressed();			
+			super.onBackPressed();
 		} else if(v == editButton)
 		{
 			Session.setProfile_editing(true);

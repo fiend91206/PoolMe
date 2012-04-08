@@ -31,7 +31,7 @@ public class User {
 	private String emailAddress;
 	private String pass;
 	
-	private int contactNumber;
+	private long contactNumber;
 	private String aboutMe;
 	private Images picture;	
 	private int rewardPoints;
@@ -106,11 +106,11 @@ public class User {
 		this.pass = pass;
 	}
 
-	public int getContactNumber() {
+	public long getContactNumber() {
 		return contactNumber;
 	}
 
-	public void setContactNumber(int contactNumber) {
+	public void setContactNumber(long contactNumber) {
 		this.contactNumber = contactNumber;
 	}
 
