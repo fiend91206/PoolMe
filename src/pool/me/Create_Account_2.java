@@ -27,6 +27,7 @@ public class Create_Account_2 extends Activity implements OnClickListener{
 		
 		submitButton = findViewById(R.id.submit_2);
 		backButton = findViewById(R.id.ca_back);
+		
 		submitButton.setOnClickListener(this);
 		backButton.setOnClickListener(this);
 		
@@ -107,7 +108,7 @@ public class Create_Account_2 extends Activity implements OnClickListener{
 		
 		}else if(v == backButton)
 		{
-			this.setContentView(R.layout.create_account);
+			super.onBackPressed();
 		}
 	
 		

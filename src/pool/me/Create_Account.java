@@ -16,7 +16,7 @@ import android.widget.EditText;
 public class Create_Account extends Activity implements OnClickListener{
 	
 	public static final int MIN_PASS_LEN = 2;
-	private View submitButton, cancelButton, nextButton, backButton;
+	private View  cancelButton, nextButton;
 	
 	private User u;
 	
@@ -24,6 +24,7 @@ public class Create_Account extends Activity implements OnClickListener{
 		super.onCreate(savedInstanceState);
 			
 		setContentView(R.layout.create_account);
+		
 		nextButton = findViewById(R.id.next);
 		cancelButton = findViewById(R.id.cancel);
 		
@@ -108,7 +109,7 @@ public class Create_Account extends Activity implements OnClickListener{
 			if(arr == null)
 			{
 				
-				this.setContentView(R.layout.create_account_2);
+				startActivity(new Intent(this,Create_Account_2.class));
 			} else
 			{
 				String s = "The following fields are required:\n";
