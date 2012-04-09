@@ -34,8 +34,8 @@ public class Database {
 	private String userURL, carpoolURL;
 	
 	public Database(){
-		userURL = "http://m.cip.gatech.edu/developer/vegeta9000/widget/api/pool_me/user";
-		carpoolURL = "http://m.cip.gatech.edu/developer/vegeta9000/widget/api/pool_me/carpool";
+		userURL = "http://m.cip.gatech.edu/developer/vegeta9000/widget/api/pool_me";
+		carpoolURL = "http://m.cip.gatech.edu/developer/vegeta9000/widget/api/pool_me";
 	}
 	
 	public User getUser(String email){
@@ -45,11 +45,9 @@ public class Database {
 		ArrayList<NameValuePair> nvp = new ArrayList<NameValuePair>();
 		
 		nvp.add(new BasicNameValuePair("email", email));
-		ja = connect(userURL + "/getUser", nvp);
+		jd = connect(userURL + "/getUser", nvp);
 		
-		try{
-			jd = ja.getJSONObject(0);
-			
+		try{			
 			u = new User(jd.getString("Email"), jd.getString("Password"));
 			u.setAboutMe(jd.getString("AboutMe"));
 			u.setContactNumber(jd.getInt("PhoneNumber"));
@@ -111,7 +109,7 @@ public class Database {
 		nvp.add(new BasicNameValuePair("returntime", new Integer(u.getReturnTime()[0]).toString()));
 		nvp.add(new BasicNameValuePair("pwd", u.getPass()));
 		
-		ja = connect(url, nvp);
+		jd = connect(url, nvp);
 	}
 	
 	public void updateFName(String fname, String email){
@@ -124,7 +122,7 @@ public class Database {
 		JSONArray ja = null;
 		JSONObject jd = null;
 		
-		ja = connect(url, nvp);
+		jd = connect(url, nvp);
 	}
 	
 	public void updateLName(String lname, String email){
@@ -137,7 +135,7 @@ public class Database {
 		JSONArray ja = null;
 		JSONObject jd = null;
 		
-		ja = connect(url, nvp);
+		jd = connect(url, nvp);
 	}
 	
 	public void updatePNum(Long pnum, String email){
@@ -150,7 +148,7 @@ public class Database {
 		JSONArray ja = null;
 		JSONObject jd = null;
 		
-		ja = connect(url,nvp);
+		jd = connect(url,nvp);
 	}
 	
 	public void updateAboutMe(String about, String email){
@@ -163,7 +161,7 @@ public class Database {
 		JSONArray ja = null;
 		JSONObject jd = null;
 		
-		ja = connect(url,nvp);
+		jd = connect(url,nvp);
 	}
 	
 	public void updateDriver(Boolean drive, String email){
@@ -176,7 +174,7 @@ public class Database {
 		JSONArray ja = null;
 		JSONObject jd = null;
 		
-		ja = connect(url,nvp);
+		jd = connect(url,nvp);
 	}
 	
 	public void updateRadioPref(String radiopref, String email){
@@ -189,7 +187,7 @@ public class Database {
 		JSONArray ja = null;
 		JSONObject jd = null;
 		
-		ja = connect(url, nvp);
+		jd = connect(url, nvp);
 	}
 	
 	public void updateEmail(String email, String oldemail){
@@ -202,7 +200,7 @@ public class Database {
 		JSONArray ja = null;
 		JSONObject jd = null;
 		
-		ja = connect(url,nvp);
+		jd = connect(url,nvp);
 	}
 	
 	public void updateFBName(String name, String email){
@@ -215,7 +213,7 @@ public class Database {
 		JSONArray ja = null;
 		JSONObject jd = null;
 		
-		ja = connect(url, nvp);
+		jd = connect(url, nvp);
 	}
 	
 	public void updateStartLoc(String startloc, String email){
@@ -228,7 +226,7 @@ public class Database {
 		JSONArray ja = null;
 		JSONObject jd = null;
 		
-		ja = connect(url,nvp);
+		jd = connect(url,nvp);
 	}
 	
 	public void updateDestLoc(String destloc, String email){
@@ -241,7 +239,7 @@ public class Database {
 		JSONArray ja = null;
 		JSONObject jd = null;
 		
-		ja = connect(url, nvp);
+		jd = connect(url, nvp);
 	}
 	
 	public void updateStartTime(String starttime, String email){
@@ -254,7 +252,7 @@ public class Database {
 		JSONArray ja = null;
 		JSONObject jd = null;
 		
-		ja = connect(url,nvp);
+		jd = connect(url,nvp);
 	}
 	
 	public void updateReturnTime(String returntime, String email){
@@ -267,7 +265,7 @@ public class Database {
 		JSONArray ja = null;
 		JSONObject jd = null;
 		
-		ja = connect(url,nvp);
+		jd = connect(url,nvp);
 	}
 	
 	public void updatePwd(String pwd, String email){
@@ -280,7 +278,7 @@ public class Database {
 		JSONArray ja = null;
 		JSONObject jd = null;
 		
-		ja = connect(url,nvp);
+		jd = connect(url,nvp);
 	}
 	
 	public boolean authenticate(String email, String pwd){
@@ -294,16 +292,15 @@ public class Database {
 		JSONArray ja = null;
 		JSONObject jd = null;
 		
-		ja = connect(url,nvp);
+		jd = connect(url,nvp);
 		
 		try{
-			Log.d("DatabaseTest", ja.toString());
-			
-			//System.out.println(ja.toString());
-			jd = ja.getJSONObject(0);			
 			auth = jd.getBoolean("auth");
-		}catch(JSONException e1){}
-		
+			Log.e("AUTH:", new Boolean(auth).toString());
+		}catch(JSONException e1){
+			Log.e("Json error", e1.toString());
+		}
+			
 		return auth;
 	}
 	
@@ -316,11 +313,9 @@ public class Database {
 		nvp.add(new BasicNameValuePair("email", id.toString()));
 		
 		
-		ja = connect(carpoolURL + "/getPool", nvp);
+		jd = connect(carpoolURL + "/getPool", nvp);
 		
-		try{
-			jd = ja.getJSONObject(0);
-			
+		try{			
 			cp.setCapacity(jd.getInt("capacity"));
 			cp.setDriverEmail(jd.getString("owneremail"));
 			
@@ -344,12 +339,10 @@ public class Database {
 		String url = carpoolURL + "/getNumPools";
 		ArrayList<NameValuePair> nvp = new ArrayList<NameValuePair>();
 		
-		ja = connect(url, nvp);
+		jd = connect(url, nvp);
 		
 		try{
-			jd = ja.getJSONObject(0);
-			
-			cp.setId(jd.getInt(jd.names().getString(0)) + 1);
+			cp.setId(jd.getInt("NumPools") + 1);
 			
 		}catch(JSONException e1){}
 		
@@ -361,7 +354,7 @@ public class Database {
 		nvp.add(new BasicNameValuePair("depttime", cp.getDeptTime()));
 		nvp.add(new BasicNameValuePair("returntime", cp.getRetTime()));
 		
-		ja = connect(url, nvp);
+		jd = connect(url, nvp);
 	}
 	
 	public void updateID(Integer newid, Integer oldid){
@@ -373,7 +366,7 @@ public class Database {
 		JSONArray ja = null;
 		JSONObject jd = null;
 		
-		ja = connect(url,nvp);
+		jd = connect(url,nvp);
 	}
 	
 	public void updateOwnerEmail(String email, Integer id){
@@ -385,7 +378,7 @@ public class Database {
 		JSONArray ja = null;
 		JSONObject jd = null;
 		
-		ja = connect(url,nvp);
+		jd = connect(url,nvp);
 	}
 	
 	public void updateMemberEmail(String email, Integer id){
@@ -397,7 +390,7 @@ public class Database {
 		JSONArray ja = null;
 		JSONObject jd = null;
 		
-		ja = connect(url,nvp);
+		jd = connect(url,nvp);
 	}
 	
 	public void updateCapacity(Integer capacity, Integer id){
@@ -409,7 +402,7 @@ public class Database {
 		JSONArray ja = null;
 		JSONObject jd = null;
 		
-		ja = connect(url,nvp);
+		jd = connect(url,nvp);
 	}
 	
 	public void updateDeptTime(String dept, Integer id){
@@ -421,7 +414,7 @@ public class Database {
 		JSONArray ja = null;
 		JSONObject jd = null;
 		
-		ja = connect(url,nvp);
+		jd = connect(url,nvp);
 	}
 	
 	public void updateReturnTime(String ret, Integer id){
@@ -433,11 +426,12 @@ public class Database {
 		JSONArray ja = null;
 		JSONObject jd = null;
 		
-		ja = connect(url,nvp);
+		jd = connect(url,nvp);
 	}
 	
-	private JSONArray connect(String url, ArrayList<NameValuePair> nvp){
+	private JSONObject connect(String url, ArrayList<NameValuePair> nvp){
 		JSONArray jArray = null;
+		JSONObject jo = null;
 		String result = null;
 		InputStream is = null;
 		StringBuilder sb=null;
@@ -457,7 +451,7 @@ public class Database {
 		
 		//convert response to string
 		try{
-			BufferedReader reader = new BufferedReader(new InputStreamReader(is));
+			BufferedReader reader = new BufferedReader(new InputStreamReader(is, "iso-8859-1"), 8);
 		    sb = new StringBuilder();
 		    sb.append(reader.readLine() + "\n");
 
@@ -472,14 +466,14 @@ public class Database {
 		}
 		
 		Log.e("DBRESULTS", result);
-		//parsing data
-		try{
-			jArray = new JSONArray(result);
-		}catch(JSONException e1){
-			Log.e("DBERROR", e1.toString());
-		}
 		
-		return jArray;
+		try{
+		jo = new JSONObject(result);
+		}catch(JSONException e1){
+			Log.e("Json error", e1.toString());
+		}
+				
+		return jo;
 	}
 
 }
