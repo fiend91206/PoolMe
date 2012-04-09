@@ -96,6 +96,11 @@
        	    android:name=".domain.Route"
        	    android:screenOrientation="portrait">
        	</activity>
+       	<activity
+       	    android:name=".Create_Pool"
+       	    android:screenOrientation="portrait">
+       	</activity>
+       	
        	
     </application>
     <uses-permission android:name="android.permission.INTERNET"/>

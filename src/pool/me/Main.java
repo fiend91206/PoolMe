@@ -28,6 +28,7 @@ private View profile, myPool, findPool, messages, rewards, route;
         messages.setOnClickListener((OnClickListener) this);
         rewards.setOnClickListener((OnClickListener) this);
         route.setOnClickListener((OnClickListener) this);
+        myPool.setOnClickListener(this);
         
 	}
 	

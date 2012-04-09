@@ -12,42 +12,43 @@ public class Carpool {
 	
 	private ArrayList<String> membersEmail;
 	private String driverEmail;
-	private Route route;
+	private String startLocation, destLocation;
 	private int capacity, id;
 	private String deptTime, retTime;
 	
 	public Carpool(){
-		this(new ArrayList<String>(), "", 0, new Route(), 0, "", "");
+		this(new ArrayList<String>(), "", 0, "", "", 0, "", "");
 	}
 
 	public Carpool(ArrayList<String> memberEmail){
-		this(memberEmail, "", 0, new Route(), 0, "" , "");
+		this(memberEmail, "", 0, "", "", 0, "" , "");
 	}
 	
 	public Carpool(ArrayList<String> memberEmail, String dEmail){
-		this(memberEmail, dEmail, 0, new Route(), 0, "", "");
+		this(memberEmail, dEmail, 0, "","", 0, "", "");
 	}
 	
 	public Carpool(ArrayList<String> memberEmail, String dEmail, int cap){
-		this(memberEmail, dEmail, cap, new Route(), 0, "", "");
+		this(memberEmail, dEmail, cap, "","", 0, "", "");
 	}
 	
-	public Carpool(ArrayList<String> memberEmail, String demail, int cap, Route r){
-		this(memberEmail, demail, cap, r, 0, "", "");
+	public Carpool(ArrayList<String> memberEmail, String demail, int cap, String startLocation, String destLocation){
+		this(memberEmail, demail, cap, startLocation, destLocation, 0, "", "");
 	}
 	
-	public Carpool(ArrayList<String> memberEmail, String demail, int cap, Route r, String d){
-		this(memberEmail, demail, cap, r, 0, d, "");
+	public Carpool(ArrayList<String> memberEmail, String demail, int cap, String startLocation, String destLocation, String d){
+		this(memberEmail, demail, cap,  startLocation, destLocation, 0, d, "");
 	}
 	
-	public Carpool(ArrayList<String> memberEmail, String demail, int cap, Route r, int i, String d, String ret){
+	public Carpool(ArrayList<String> memberEmail, String demail, int cap, String startLocation, String destLocation, int i, String d, String ret){
 		membersEmail = memberEmail;
 		driverEmail = demail;
 		capacity = cap;
 		id = i;
-		route = r;
 		deptTime = d;
 		retTime = ret;
+		this.startLocation = startLocation;
+		this.destLocation = destLocation;
 	}
 
 	public ArrayList<String> getMembersEmail() {
@@ -66,13 +67,7 @@ public class Carpool {
 		this.driverEmail = driverEmail;
 	}
 
-	public Route getRoute() {
-		return route;
-	}
 
-	public void setRoute(Route route) {
-		this.route = route;
-	}
 
 	public int getCapacity() {
 		return capacity;
@@ -105,6 +100,24 @@ public class Carpool {
 	public void setRetTime(String retTime) {
 		this.retTime = retTime;
 	}
+
+	public String getStartLocation() {
+		return startLocation;
+	}
+
+	public void setStartLocation(String startLocation) {
+		this.startLocation = startLocation;
+	}
+
+	public String getDestLocation() {
+		return destLocation;
+	}
+
+	public void setDestLocation(String destLocation) {
+		this.destLocation = destLocation;
+	}
+	
+	
 	
 	
 }
