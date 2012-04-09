@@ -43,7 +43,7 @@ public class Create_Pool extends Activity implements  OnClickListener{
 			ArrayList<String> arr = populateCarpool(c);
 			if((arr == null) || (arr.size()<1))
 			{
-				//Add to server code goes here
+				//TODO: Add to server code goes here
 				Toast t = Toast.makeText(getApplicationContext(), "Carpool Posted to Server", Toast.LENGTH_SHORT);
 				t.show();
 				startActivity(new Intent(this,Main.class));
