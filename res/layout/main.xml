@@ -23,7 +23,7 @@
 	            android:id="@+id/profile"
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
-	            android:src="@drawable/ic_launcher"
+	            android:src="@drawable/profile"
 	            android:layout_gravity="center" />
 	        
 	          <TextView
@@ -44,7 +44,7 @@
 	            android:id="@+id/my_pool"
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
-	            android:src="@drawable/ic_launcher"
+	            android:src="@drawable/my_pool"
 	            android:layout_gravity="center" />
 	        
 	        <TextView
@@ -72,8 +72,8 @@
 	        <ImageButton
 	            android:id="@+id/find_pool"
 	            android:layout_width="wrap_content"
-	            android:layout_height="wrap_content"
-	            android:src="@drawable/ic_launcher"
+	            android:layout_height="70dp"
+	            android:src="@drawable/find_pool"
 	            android:layout_gravity="center" />
 	        
 	        <TextView
@@ -93,7 +93,7 @@
 	            android:id="@+id/messages"
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
-	            android:src="@drawable/ic_launcher"
+	            android:src="@drawable/mesages"
 	            android:layout_gravity="center" />
 	        
 	        <TextView
@@ -120,8 +120,8 @@
 	        <ImageButton
 	            android:id="@+id/rewards"
 	            android:layout_width="wrap_content"
-	            android:layout_height="wrap_content"
-	            android:src="@drawable/ic_launcher"
+	            android:layout_height="70dp"
+	            android:src="@drawable/money_bag"
 	            android:layout_gravity="center" />
 	        
 	        <TextView
@@ -142,7 +142,7 @@
 	            android:id="@+id/route"
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
-	            android:src="@drawable/ic_launcher"
+	            android:src="@drawable/route"
 	            android:layout_gravity="center" />
 	        
 	        <TextView

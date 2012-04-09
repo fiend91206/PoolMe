@@ -275,6 +275,9 @@ public class Database {
 			memEmail.add(jd.getString("memberemail"));
 			cp.setMembersEmail(memEmail);
 			
+			cp.setDeptTime(jd.getString("depttime"));
+			cp.setRetTime(jd.getString("returntime"));
+			
 //			cp.setRoute(new Route());
 		}catch(JSONException e1){}
 		
@@ -299,6 +302,8 @@ public class Database {
 		url += "&owneremail=" + cp.getDriverEmail();
 		url += "&memberemail=" + cp.getMembersEmail().get(0);
 		url += "&capcaity=" + cp.getCapacity();
+		url += "&depttime=" + cp.getDeptTime();
+		url += "&returntime=" + cp.getRetTime();
 		
 		ja = connect(url);
 	}
@@ -329,6 +334,22 @@ public class Database {
 	
 	public void updateCapacity(int capacity, int id){
 		String url = carpoolURL + "?func=updateCapacity&id=" + id + "&capacity=" + capacity;
+		JSONArray ja = null;
+		JSONObject jd = null;
+		
+		ja = connect(url);
+	}
+	
+	public void updateDeptTime(String dept, int id){
+		String url = carpoolURL + "?func=updateDeptTime&id=" + id + "&depttime=" + dept;
+		JSONArray ja = null;
+		JSONObject jd = null;
+		
+		ja = connect(url);
+	}
+	
+	public void updateReturnTime(String ret, int id){
+		String url = carpoolURL + "?func=updateDeptTime&id=" + id + "&returntime=" + ret;
 		JSONArray ja = null;
 		JSONObject jd = null;
 		
