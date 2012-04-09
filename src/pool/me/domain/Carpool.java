@@ -14,33 +14,40 @@ public class Carpool {
 	private String driverEmail;
 	private Route route;
 	private int capacity, id;
+	private String deptTime, retTime;
 	
 	public Carpool(){
-		this(new ArrayList<String>(), "", 0, new Route(), 0);
+		this(new ArrayList<String>(), "", 0, new Route(), 0, "", "");
 	}
 
 	public Carpool(ArrayList<String> memberEmail){
-		this(memberEmail, "", 0, new Route(), 0);
+		this(memberEmail, "", 0, new Route(), 0, "" , "");
 	}
 	
 	public Carpool(ArrayList<String> memberEmail, String dEmail){
-		this(memberEmail, dEmail, 0, new Route(), 0);
+		this(memberEmail, dEmail, 0, new Route(), 0, "", "");
 	}
 	
 	public Carpool(ArrayList<String> memberEmail, String dEmail, int cap){
-		this(memberEmail, dEmail, cap, new Route(), 0);
+		this(memberEmail, dEmail, cap, new Route(), 0, "", "");
 	}
 	
 	public Carpool(ArrayList<String> memberEmail, String demail, int cap, Route r){
-		this(memberEmail, demail, cap, r, 0);
+		this(memberEmail, demail, cap, r, 0, "", "");
 	}
 	
-	public Carpool(ArrayList<String> memberEmail, String demail, int cap, Route r, int i){
+	public Carpool(ArrayList<String> memberEmail, String demail, int cap, Route r, String d){
+		this(memberEmail, demail, cap, r, 0, d, "");
+	}
+	
+	public Carpool(ArrayList<String> memberEmail, String demail, int cap, Route r, int i, String d, String ret){
 		membersEmail = memberEmail;
 		driverEmail = demail;
 		capacity = cap;
 		id = i;
 		route = r;
+		deptTime = d;
+		retTime = ret;
 	}
 
 	public ArrayList<String> getMembersEmail() {
@@ -81,6 +88,22 @@ public class Carpool {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public String getDeptTime() {
+		return deptTime;
+	}
+
+	public void setDeptTime(String deptTime) {
+		this.deptTime = deptTime;
+	}
+
+	public String getRetTime() {
+		return retTime;
+	}
+
+	public void setRetTime(String retTime) {
+		this.retTime = retTime;
 	}
 	
 	
