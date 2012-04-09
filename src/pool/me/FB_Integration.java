@@ -1,3 +1,7 @@
+                                                                     
+                                                                     
+                                                                     
+                                             
 package pool.me;
 
 import java.io.FileNotFoundException;
@@ -31,7 +35,7 @@ public class FB_Integration extends Activity implements DialogListener{
     
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.main);
+        //setContentView(R.layout.main);
         facebook.authorize(this,new String[] { "email" }, this);
     }
    
@@ -39,13 +43,15 @@ public class FB_Integration extends Activity implements DialogListener{
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         facebook.authorizeCallback(requestCode, resultCode, data);
+        //setContentView(R.layout.main);
     }
 
     public void onComplete(Bundle values) {
     	//Toast.makeText(getApplicationContext(), facebook.getAccessToken(), Toast.LENGTH_LONG).show();
     	async = new AsyncFacebookRunner(facebook);
         async.request("me", new UserListener(this));
-      //  async.request("me/friends", new FbRequestListener());
+        async.request("me/friends", new FriendListener(this));
+        //setContentView(R.layout.main);
     }
 
 	public void onFacebookError(FacebookError e) {
@@ -71,6 +77,55 @@ public class FB_Integration extends Activity implements DialogListener{
 	 private Activity a;
 
 	public UserListener(Activity a)
+	{
+		super();
+		this.a = a; 
+	}
+	 
+	 public void onComplete(String response, Object state) {
+		try {
+			JSONObject json= new JSONObject(response);
+			String firstName = json.getString("first_name");
+			String lastName = json.getString("last_name");
+			String email = json.getString("email");
+			User u = new User(email, firstName, lastName);
+			Session s = Session.getInstance();
+			s.setUser(u);
+			//a.setContentView(R.layout.main);
+			a.startActivity(new Intent(a,Create_Account_2.class));
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+	}
+
+	public void onIOException(IOException e, Object state) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void onFileNotFoundException(FileNotFoundException e, Object state) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void onMalformedURLException(MalformedURLException e, Object state) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void onFacebookError(FacebookError e, Object state) {
+		// TODO Auto-generated method stub
+		
+	}
+}
+ 
+ class FriendListener implements RequestListener{
+	 private Activity a;
+
+	public FriendListener(Activity a)
 	{
 		super();
 		this.a = a; 
