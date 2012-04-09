@@ -44,7 +44,7 @@ public class Login extends Activity implements OnClickListener{
 		} else if(v == facebookLogin)
 		{
 			startActivity(new Intent(this,FB_Integration.class));
-			finish();
+			//finish();
 			
 		} else if(v == this.createAccount)
 		{
