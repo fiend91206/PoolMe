@@ -104,6 +104,18 @@
        	    android:name=".Search_Pool"
        	    android:screenOrientation="portrait">
        	</activity>
+       	<activity
+       	    android:name=".Coming_Soon"
+       	    android:screenOrientation="portrait"
+       	    ></activity>
+       	<activity
+       	    android:name=".Search_Pool_Results"
+       	    android:screenOrientation="portrait">
+       	</activity>
+       	<activity
+       	    android:name=".Route_Map"
+       	    android:screenOrientation="portrait">
+       	</activity>
        	
        	
     </application>

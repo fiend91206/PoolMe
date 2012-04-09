@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:background="@drawable/background" >
+
+    <TextView
+        android:id="@+id/mp_text_map"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="My Carpools"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    
+    
+<!--  horizontal line -->
+	<TextView
+		android:id="@+id/hl1_map"
+		android:layout_width="fill_parent"
+		android:layout_height="2dip"
+		android:background="#CFB53B" />
+<!--  end horizontal line -->
+
+	
+
+	<ListView
+	    android:id="@+id/map_list"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content" >
+	</ListView>
+
+</LinearLayout>
