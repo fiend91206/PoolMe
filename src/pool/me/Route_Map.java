@@ -25,7 +25,7 @@ public class Route_Map extends Activity implements OnItemClickListener{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.route_map);
 		
-		Toast.makeText(getApplicationContext(), "This feature is not fully complete yet. Currently working off hard coded data." , Toast.LENGTH_LONG).show();
+		//Toast.makeText(getApplicationContext(), "This feature is not fully complete yet. Currently working off hard coded data." , Toast.LENGTH_LONG).show();
 		
 		
 		ListView lv = (ListView)findViewById(R.id.map_list);
