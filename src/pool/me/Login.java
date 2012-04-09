@@ -60,6 +60,11 @@ public class Login extends Activity implements OnClickListener{
 			{
 				User u = new User();
 				u = db.getUser(email);
+				u.setFirstName("Shashank");
+				u.setLastName("Chamoli");
+				u.setContactNumber(77012567);
+				u.setAboutMe("Hello. I'm new here.");
+				u.setSourceLocation("900 Hemphil Avenue");
 				Session.getInstance().setUser(u);
 				startActivity(new Intent(this, Main.class));
 				finish();
