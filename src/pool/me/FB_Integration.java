@@ -86,6 +86,11 @@ public class FB_Integration extends Activity implements DialogListener{
 			String lastName = json.getString("last_name");
 			String email = json.getString("email");
 			User u = new User(email, firstName, lastName);
+			u.setFirstName("Shashank");
+			u.setLastName("Chamoli");
+			u.setContactNumber(77012567);
+			u.setAboutMe("Hello. I'm new here too.");
+			u.setSourceLocation("900 Hemphil Avenue");
 			Session s = Session.getInstance();
 			s.setUser(u);
 			//a.setContentView(R.layout.main);
