@@ -30,7 +30,7 @@ public class Find_Pool extends Activity implements OnClickListener{
 			
 		} else if(v == searchButton)
 		{
-			
+			startActivity(new Intent(this, Search_Pool.class));
 		}
 		
 		

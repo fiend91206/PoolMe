@@ -9,14 +9,14 @@
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Large Text"
+        android:text="Search for Posted Carpools"
         android:textAppearance="?android:attr/textAppearanceLarge" />
     
     <TextView
-       android:id="@+id/filters_text"
+       android:id="@+id/sort_text"
        android:layout_width="wrap_content"
        android:layout_height="wrap_content"
-       android:text="Filter By:"
+       android:text="Sort By:"
        android:textAppearance="?android:attr/textAppearanceMedium"
        android:layout_marginTop="10dp" />
 	    
@@ -45,13 +45,14 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="fill_horizontal|center"
                 android:text="Connections" />
-
             <CheckBox
-                android:id="@+id/interests"
+                android:id="@+id/proximity"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="fill_horizontal|center"
-                android:text="Interests" />
+                android:text="Proximity" />
+
+            
 
         </TableRow>
 
@@ -60,12 +61,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" >
 
-            <CheckBox
-                android:id="@+id/proximity"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="fill_horizontal|center"
-                android:text="Proximity" />
+            
 
             <CheckBox
                 android:id="@+id/time"
@@ -73,6 +69,12 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="fill_horizontal|center"
                 android:text="Time" />
+            <CheckBox
+                android:id="@+id/interests"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="fill_horizontal|center"
+                android:text="Interests" />
         </TableRow>
     </TableLayout>
     
