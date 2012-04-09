@@ -1,103 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical"
     android:background="@drawable/background" >
 
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
+    <ScrollView
+        android:id="@+id/scrollView3"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Search for Posted Carpools"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-    
-    <TextView
-       android:id="@+id/sort_text"
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       android:text="Sort By:"
-       android:textAppearance="?android:attr/textAppearanceMedium"
-       android:layout_marginTop="10dp" />
-	    
-<!--  horizontal line -->
-	<TextView
-		android:id="@+id/hl1"
-		android:layout_width="fill_parent"
-		android:layout_height="2dip"
-		android:background="#CFB53B" />
-<!--  end horizontal line -->
+         >
 
-    <TableLayout
-        android:id="@+id/tableLayout1"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:stretchColumns="0,1" >
+        <LinearLayout
+            android:id="@+id/linearLayout1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+        
+		
 
-        <TableRow
-            android:id="@+id/tableRow1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
+		    <TextView
+		        android:id="@+id/cp_start_text2"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:text="Start Location:"
+		        android:textAppearance="?android:attr/textAppearanceMedium" />
+		
+		    <EditText
+		        android:id="@+id/sp_start"
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:inputType="textPersonName" >
+		
+		        <requestFocus />
+		    </EditText>
+		
+		    <TextView
+		        android:id="@+id/cp_dest_text2"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:text="Destination Location:"
+		        android:textAppearance="?android:attr/textAppearanceMedium" />
+		
+		    <EditText
+		        android:id="@+id/sp_dest"
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:inputType="text" />
+		
+		    
+		    	
+</LinearLayout>
+    </ScrollView>
+		    	<LinearLayout
+		    	    android:layout_width="fill_parent"
+		    	    android:layout_height="match_parent"
+		    	    android:layout_marginTop="50px"
+		    	    android:gravity="bottom" >
 
-            <CheckBox
-                android:id="@+id/connections"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="fill_horizontal|center"
-                android:text="Connections" />
-            <CheckBox
-                android:id="@+id/proximity"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="fill_horizontal|center"
-                android:text="Proximity" />
-
-            
-
-        </TableRow>
-
-        <TableRow
-            android:id="@+id/tableRow2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
-
-            
-
-            <CheckBox
-                android:id="@+id/time"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="fill_horizontal|center"
-                android:text="Time" />
-            <CheckBox
-                android:id="@+id/interests"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="fill_horizontal|center"
-                android:text="Interests" />
-        </TableRow>
-    </TableLayout>
-    
-    <TextView
-       android:id="@+id/matches_text"
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       android:text="Matches:"
-       android:textAppearance="?android:attr/textAppearanceMedium"
-       android:layout_marginTop="10dp" />
-	    
-<!--  horizontal line -->
-	<TextView
-		android:id="@+id/hl2"
-		android:layout_width="fill_parent"
-		android:layout_height="2dip"
-		android:background="#CFB53B" />
-<!--  end horizontal line -->
-
-	<ListView
-	    android:id="@+id/listView1"
-	    android:layout_width="fill_parent"
-	    android:layout_height="wrap_content" >
-	</ListView>
+	    <Button
+	            android:id="@+id/sp_cancel"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_weight="0.15"
+	            android:text="Cancel" />
+	
+	        <Button
+	            android:id="@+id/sp_Search"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_weight="0.15"
+	            android:text="Search" />	    
+	</LinearLayout>
 
 </LinearLayout>
