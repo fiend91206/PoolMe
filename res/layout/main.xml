@@ -24,7 +24,8 @@
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
 	            android:src="@drawable/profile"
-	            android:layout_gravity="center" />
+	            android:layout_gravity="center" 
+	            android:background="@null"/>
 	        
 	          <TextView
 	            android:id="@+id/profile_text"
@@ -45,7 +46,8 @@
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
 	            android:src="@drawable/my_pool"
-	            android:layout_gravity="center" />
+	            android:layout_gravity="center"
+	            android:background="@null" android:paddingTop="10dp"/>
 	        
 	        <TextView
 	            android:id="@+id/mp_text"
@@ -74,7 +76,8 @@
 	            android:layout_width="wrap_content"
 	            android:layout_height="70dp"
 	            android:src="@drawable/find_pool"
-	            android:layout_gravity="center" />
+	            android:layout_gravity="center"
+	            android:background="@null" />
 	        
 	        <TextView
 	            android:id="@+id/fp_text"
@@ -94,7 +97,8 @@
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
 	            android:src="@drawable/mesages"
-	            android:layout_gravity="center" />
+	            android:layout_gravity="center"
+	            android:background="@null" android:paddingTop="15dp"/>
 	        
 	        <TextView
 	            android:id="@+id/messages_text"
@@ -122,7 +126,8 @@
 	            android:layout_width="wrap_content"
 	            android:layout_height="70dp"
 	            android:src="@drawable/money_bag"
-	            android:layout_gravity="center" />
+	            android:layout_gravity="center"
+	            android:background="@null" />
 	        
 	        <TextView
 	            android:id="@+id/rewards_text"
@@ -143,7 +148,8 @@
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
 	            android:src="@drawable/route"
-	            android:layout_gravity="center" />
+	            android:layout_gravity="center"
+	            android:background="@null" android:paddingTop="10dp"/>
 	        
 	        <TextView
 	            android:id="@+id/route_text"
