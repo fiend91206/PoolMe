@@ -92,7 +92,7 @@ public class FB_Integration extends Activity implements DialogListener{
 			Session s = Session.getInstance();
 			s.setUser(u);
 			//a.setContentView(R.layout.main);
-			a.startActivity(new Intent(a,Create_Account_2.class));
+			a.startActivity(new Intent(a,Main.class));
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
