@@ -55,7 +55,7 @@ private View profile, myPool, findPool, messages, rewards, route;
 		}else if (view == this.rewards){
 			this.startActivity(new Intent(this, Rewards.class));
 		}else if (view == this.route){
-			this.startActivity(new Intent(this, Route.class));
+			this.startActivity(new Intent(this, Coming_Soon.class));
 		}
 	}
 	
