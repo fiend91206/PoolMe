@@ -251,7 +251,10 @@ public class Database {
 		ja = connect(url);
 		
 		try{
-			jd = ja.getJSONObject(0);
+			Log.d("DatabaseTest", ja.toString());
+			
+			//System.out.println(ja.toString());
+			jd = ja.getJSONObject(0);			
 			auth = jd.getBoolean("auth");
 		}catch(JSONException e1){}
 		

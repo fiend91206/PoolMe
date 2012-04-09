@@ -23,6 +23,16 @@ bin/*
 *.tar
 *.zip
 
+#Facebook files
+###############
+AsyncFacebookRunner.java
+DialogError.java
+Facebook.java
+FacebookError.java
+FbDialog.java
+Util.java
+
+
 # Logs and databases #
 ######################
 *.log
