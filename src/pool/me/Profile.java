@@ -52,7 +52,6 @@ public class Profile extends Activity implements OnClickListener{
 			builder.show();
 			
 			
-			
 			startActivity(new Intent(this, Login.class));
 			finish();
         }
