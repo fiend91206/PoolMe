@@ -12,6 +12,7 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -33,16 +34,18 @@ public class Database {
 	private String userURL, carpoolURL;
 	
 	public Database(){
-		userURL = "http://m.cip.gatech.edu/developer/vegeta9000/widget/pool_me/user.php";
-		carpoolURL = "http://m.cip.gatech.edu/developer/vegeta9000/widget/pool_me/carpool.php";
+		userURL = "http://m.cip.gatech.edu/developer/vegeta9000/widget/api/pool_me/user";
+		carpoolURL = "http://m.cip.gatech.edu/developer/vegeta9000/widget/api/pool_me/carpool";
 	}
 	
 	public User getUser(String email){
 		User u = null;
 		JSONArray ja = null;
 		JSONObject jd = null;
+		ArrayList<NameValuePair> nvp = new ArrayList<NameValuePair>();
 		
-		ja = connect(userURL + "?func=getUser&email=" + email);
+		nvp.add(new BasicNameValuePair("email", email));
+		ja = connect(userURL + "/getUser", nvp);
 		
 		try{
 			jd = ja.getJSONObject(0);
@@ -89,166 +92,209 @@ public class Database {
 	}
 	
 	public void addUser(User u){
-		String url = userURL + "?func=addUser";
+		String url = userURL + "/addUser";
 		JSONArray ja = null;
 		JSONObject jd = null;
+		ArrayList<NameValuePair> nvp = new ArrayList<NameValuePair>();
 		
-		url += "&fname=" + u.getFirstName();
-		url += "&lname=" + u.getLastName();
-		url += "&pnum=" + u.getContactNumber();
-		url += "&about=" + u.getAboutMe();
-		url += "&driver=" + u.isWillingToDrive();
-		url += "&radiopref=" + u.getRadioPrefs().get(0).toString();
-		url += "&email=" + u.getEmailAddress();
-		url += "&fbuname=" + u.getFacebookProfile().toString();
-		url += "&startloc=" + u.getSourceLocation();
-		url += "&destloc=" + u.getDestLocation();
-		url += "&starttime=" + u.getDepartureTime()[0];
-		url += "&returntime=" + u.getReturnTime()[0];
-		url += "&pwd=" + u.getPass();
+		nvp.add(new BasicNameValuePair("fname", u.getFirstName()));
+		nvp.add(new BasicNameValuePair("lname", u.getLastName()));
+		nvp.add(new BasicNameValuePair("pnum", new Long(u.getContactNumber()).toString()));
+		nvp.add(new BasicNameValuePair("about", u.getAboutMe()));
+		nvp.add(new BasicNameValuePair("driver", new Boolean(u.isWillingToDrive()).toString()));
+		nvp.add(new BasicNameValuePair("radiopref", u.getRadioPrefs().get(0).toString()));
+		nvp.add(new BasicNameValuePair("email", u.getEmailAddress()));
+		nvp.add(new BasicNameValuePair("fbuname", u.getFacebookProfile().toString()));
+		nvp.add(new BasicNameValuePair("startloc", u.getSourceLocation()));
+		nvp.add(new BasicNameValuePair("destloc", u.getDestLocation()));
+		nvp.add(new BasicNameValuePair("starttime", new Integer(u.getDepartureTime()[0]).toString()));
+		nvp.add(new BasicNameValuePair("returntime", new Integer(u.getReturnTime()[0]).toString()));
+		nvp.add(new BasicNameValuePair("pwd", u.getPass()));
 		
-		ja = connect(url);
+		ja = connect(url, nvp);
 	}
 	
 	public void updateFName(String fname, String email){
-		String url = userURL + "?func=updateFName&email=" + email;
-		url += "&fname=" + fname;
+		String url = userURL + "/updateFName";
+		ArrayList<NameValuePair> nvp = new ArrayList<NameValuePair>();
+		
+		nvp.add(new BasicNameValuePair("email", email));
+		nvp.add(new BasicNameValuePair("fname", fname));
 		
 		JSONArray ja = null;
 		JSONObject jd = null;
 		
-		ja = connect(url);
+		ja = connect(url, nvp);
 	}
 	
 	public void updateLName(String lname, String email){
-		String url = userURL + "?func=updateLName&email=" + email;
-		url += "&lname=" + lname;
+		String url = userURL + "/updateLName";
+		ArrayList<NameValuePair> nvp = new ArrayList<NameValuePair>();
+		nvp.add(new BasicNameValuePair("email", email));
+		
+		nvp.add(new BasicNameValuePair("lname", lname));
 		
 		JSONArray ja = null;
 		JSONObject jd = null;
 		
-		ja = connect(url);
+		ja = connect(url, nvp);
 	}
 	
-	public void updatePNum(int pnum, String email){
-		String url = userURL + "?func=updatePNum&email=" + email;
-		url += "&pnum=" + pnum;
+	public void updatePNum(Long pnum, String email){
+		String url = userURL + "/updatePNum";
+		ArrayList<NameValuePair> nvp = new ArrayList<NameValuePair>();
+		nvp.add(new BasicNameValuePair("email", email));
+		
+		nvp.add(new BasicNameValuePair("pnum", pnum.toString()));
 		
 		JSONArray ja = null;
 		JSONObject jd = null;
 		
-		ja = connect(url);
+		ja = connect(url,nvp);
 	}
 	
 	public void updateAboutMe(String about, String email){
-		String url = userURL + "?func=updateAboutMe&email=" + email;
-		url += "&about=" + about;
+		String url = userURL + "/updateAboutMe";
+		ArrayList<NameValuePair> nvp = new ArrayList<NameValuePair>();
+		nvp.add(new BasicNameValuePair("email", email));
+		
+		nvp.add(new BasicNameValuePair("about", about));
 		
 		JSONArray ja = null;
 		JSONObject jd = null;
 		
-		ja = connect(url);
+		ja = connect(url,nvp);
 	}
 	
 	public void updateDriver(Boolean drive, String email){
-		String url = userURL + "?func=updateDriver&email=" + email;
-		url += "&driver=" + drive.toString();
+		String url = userURL + "/updateDriver";
+		ArrayList<NameValuePair> nvp = new ArrayList<NameValuePair>();
+		nvp.add(new BasicNameValuePair("email", email));
+		
+		nvp.add(new BasicNameValuePair("driver", drive.toString()));
 		
 		JSONArray ja = null;
 		JSONObject jd = null;
 		
-		ja = connect(url);
+		ja = connect(url,nvp);
 	}
 	
 	public void updateRadioPref(String radiopref, String email){
-		String url = userURL + "?func=updateRadioPref&email=" + email;
-		url += "&radiopref=" + radiopref;
+		String url = userURL + "/updateRadioPref";
+		ArrayList<NameValuePair> nvp = new ArrayList<NameValuePair>();
+		nvp.add(new BasicNameValuePair("email", email));
+		
+		nvp.add(new BasicNameValuePair("radiopref", radiopref));
 		
 		JSONArray ja = null;
 		JSONObject jd = null;
 		
-		ja = connect(url);
+		ja = connect(url, nvp);
 	}
 	
 	public void updateEmail(String email, String oldemail){
-		String url = userURL + "?func=updateEmail&email=" + email;
-		url += "&oldemail=" + oldemail;
+		String url = userURL + "/updateEmail";
+		ArrayList<NameValuePair> nvp = new ArrayList<NameValuePair>();
+		nvp.add(new BasicNameValuePair("email", email));
+		
+		nvp.add(new BasicNameValuePair("oldemail", oldemail));
 		
 		JSONArray ja = null;
 		JSONObject jd = null;
 		
-		ja = connect(url);
+		ja = connect(url,nvp);
 	}
 	
 	public void updateFBName(String name, String email){
-		String url = userURL + "?func=updateFBName&email=" + email;
-		url += "&fbuname=" + name;
+		String url = userURL + "/updateFBName";
+		ArrayList<NameValuePair> nvp = new ArrayList<NameValuePair>();
+		nvp.add(new BasicNameValuePair("email", email));
+		
+		nvp.add(new BasicNameValuePair("fbuname", name));
 		
 		JSONArray ja = null;
 		JSONObject jd = null;
 		
-		ja = connect(url);
+		ja = connect(url, nvp);
 	}
 	
 	public void updateStartLoc(String startloc, String email){
-		String url = userURL + "?func=updateStartLoc&email=" + email;
-		url += "&startloc=" + startloc;
+		String url = userURL + "/updateStartLoc";
+		ArrayList<NameValuePair> nvp = new ArrayList<NameValuePair>();
+		nvp.add(new BasicNameValuePair("email", email));
+		
+		nvp.add(new BasicNameValuePair("startloc", startloc));
 		
 		JSONArray ja = null;
 		JSONObject jd = null;
 		
-		ja = connect(url);
+		ja = connect(url,nvp);
 	}
 	
 	public void updateDestLoc(String destloc, String email){
-		String url = userURL + "?func=updateDestLoc&email=" + email;
-		url += "&destloc=" + destloc;
+		String url = userURL + "/updateDestLoc";
+		ArrayList<NameValuePair> nvp = new ArrayList<NameValuePair>();
+		nvp.add(new BasicNameValuePair("email", email));
+		
+		nvp.add(new BasicNameValuePair("destloc", destloc));
 		
 		JSONArray ja = null;
 		JSONObject jd = null;
 		
-		ja = connect(url);
+		ja = connect(url, nvp);
 	}
 	
 	public void updateStartTime(String starttime, String email){
-		String url = userURL + "?func=updateStartTime&email=" + email;
-		url += "&starttime=" + starttime;
+		String url = userURL + "/updateStartTime";
+		ArrayList<NameValuePair> nvp = new ArrayList<NameValuePair>();
+		nvp.add(new BasicNameValuePair("email", email));
+		
+		nvp.add(new BasicNameValuePair("starttime", starttime));
 		
 		JSONArray ja = null;
 		JSONObject jd = null;
 		
-		ja = connect(url);
+		ja = connect(url,nvp);
 	}
 	
 	public void updateReturnTime(String returntime, String email){
-		String url = userURL + "?func=updateReturnTime&email=" + email;
-		url += "&returntime=" + returntime;
+		String url = userURL + "/updateReturnTime";
+		ArrayList<NameValuePair> nvp = new ArrayList<NameValuePair>();
+		nvp.add(new BasicNameValuePair("email", email));
+		
+		nvp.add(new BasicNameValuePair("returntime", returntime));
 		
 		JSONArray ja = null;
 		JSONObject jd = null;
 		
-		ja = connect(url);
+		ja = connect(url,nvp);
 	}
 	
 	public void updatePwd(String pwd, String email){
-		String url = userURL + "?func=updatePWD&email=" + email;
-		url += "&pwd=" + pwd;
+		String url = userURL + "/updatePWD";
+		ArrayList<NameValuePair> nvp = new ArrayList<NameValuePair>();
+		nvp.add(new BasicNameValuePair("email", email));
+		
+		nvp.add(new BasicNameValuePair("pwd", pwd));
 		
 		JSONArray ja = null;
 		JSONObject jd = null;
 		
-		ja = connect(url);
+		ja = connect(url,nvp);
 	}
 	
 	public boolean authenticate(String email, String pwd){
 		boolean auth = false;
-		String url = userURL + "?func=authenticate&email=" + email;
-		url += "&pwd=" + pwd;
+		String url = userURL + "/authenticate";
+		ArrayList<NameValuePair> nvp = new ArrayList<NameValuePair>();
+		nvp.add(new BasicNameValuePair("email", email));
+		
+		nvp.add(new BasicNameValuePair("pwd", pwd));
 		
 		JSONArray ja = null;
 		JSONObject jd = null;
 		
-		ja = connect(url);
+		ja = connect(url,nvp);
 		
 		try{
 			Log.d("DatabaseTest", ja.toString());
@@ -261,12 +307,16 @@ public class Database {
 		return auth;
 	}
 	
-	public Carpool getPool(int id){
+	public Carpool getPool(Integer id){
 		Carpool cp = new Carpool();
 		JSONArray ja = null;
 		JSONObject jd = null;
+
+		ArrayList<NameValuePair> nvp = new ArrayList<NameValuePair>();
+		nvp.add(new BasicNameValuePair("email", id.toString()));
 		
-		ja = connect(carpoolURL + "?func=getPoolr&id=" + id);
+		
+		ja = connect(carpoolURL + "/getPool", nvp);
 		
 		try{
 			jd = ja.getJSONObject(0);
@@ -291,8 +341,10 @@ public class Database {
 		JSONArray ja = null;
 		JSONObject jd = null;
 		
-		String url = carpoolURL + "?func=getNumPools";
-		ja = connect(url);
+		String url = carpoolURL + "/getNumPools";
+		ArrayList<NameValuePair> nvp = new ArrayList<NameValuePair>();
+		
+		ja = connect(url, nvp);
 		
 		try{
 			jd = ja.getJSONObject(0);
@@ -301,77 +353,101 @@ public class Database {
 			
 		}catch(JSONException e1){}
 		
-		url = carpoolURL + "?func=addPool&id=" + cp.getId();
-		url += "&owneremail=" + cp.getDriverEmail();
-		url += "&memberemail=" + cp.getMembersEmail().get(0);
-		url += "&capcaity=" + cp.getCapacity();
-		url += "&depttime=" + cp.getDeptTime();
-		url += "&returntime=" + cp.getRetTime();
+		url = carpoolURL + "/addPool";
+		nvp.add(new BasicNameValuePair("id", new Integer(cp.getId()).toString()));
+		nvp.add(new BasicNameValuePair("owneremail", cp.getDriverEmail()));
+		nvp.add(new BasicNameValuePair("memberemail", cp.getMembersEmail().get(0)));
+		nvp.add(new BasicNameValuePair("capcaity", new Integer(cp.getCapacity()).toString()));
+		nvp.add(new BasicNameValuePair("depttime", cp.getDeptTime()));
+		nvp.add(new BasicNameValuePair("returntime", cp.getRetTime()));
 		
-		ja = connect(url);
+		ja = connect(url, nvp);
 	}
 	
-	public void updateID(int newid, int oldid){
-		String url = carpoolURL + "?func=updateID&id=" + newid + "&oldid=" + oldid; 
+	public void updateID(Integer newid, Integer oldid){
+		String url = carpoolURL + "/updateID"; 
+		ArrayList<NameValuePair> nvp = new ArrayList<NameValuePair>();
+		nvp.add(new BasicNameValuePair("id", newid.toString()));
+		nvp.add(new BasicNameValuePair("oldid", oldid.toString()));
+		
 		JSONArray ja = null;
 		JSONObject jd = null;
 		
-		ja = connect(url);
+		ja = connect(url,nvp);
 	}
 	
-	public void updateOwnerEmail(String email, int id){
-		String url = carpoolURL + "?func=updateOwnEmail&id=" + id + "&owneremail=" + email;
+	public void updateOwnerEmail(String email, Integer id){
+		String url = carpoolURL + "/updateOwnerEmail";
+		ArrayList<NameValuePair> nvp = new ArrayList<NameValuePair>();
+		nvp.add(new BasicNameValuePair("id", id.toString()));
+		nvp.add(new BasicNameValuePair("email", email));
+		
 		JSONArray ja = null;
 		JSONObject jd = null;
 		
-		ja = connect(url);
+		ja = connect(url,nvp);
 	}
 	
-	public void updateMemberEmail(String email, int id){
-		String url = carpoolURL + "?func=updateMemEmail&id=" + id + "&memberemail=" + email;
+	public void updateMemberEmail(String email, Integer id){
+		String url = carpoolURL + "/updateMemberEmail";
+		ArrayList<NameValuePair> nvp = new ArrayList<NameValuePair>();
+		nvp.add(new BasicNameValuePair("id", id.toString()));
+		nvp.add(new BasicNameValuePair("email", email));
+		
 		JSONArray ja = null;
 		JSONObject jd = null;
 		
-		ja = connect(url);
+		ja = connect(url,nvp);
 	}
 	
-	public void updateCapacity(int capacity, int id){
-		String url = carpoolURL + "?func=updateCapacity&id=" + id + "&capacity=" + capacity;
+	public void updateCapacity(Integer capacity, Integer id){
+		String url = carpoolURL + "/updateCapacity";
+		ArrayList<NameValuePair> nvp = new ArrayList<NameValuePair>();
+		nvp.add(new BasicNameValuePair("id", id.toString()));
+		nvp.add(new BasicNameValuePair("capacity", capacity.toString()));
+		
 		JSONArray ja = null;
 		JSONObject jd = null;
 		
-		ja = connect(url);
+		ja = connect(url,nvp);
 	}
 	
-	public void updateDeptTime(String dept, int id){
-		String url = carpoolURL + "?func=updateDeptTime&id=" + id + "&depttime=" + dept;
+	public void updateDeptTime(String dept, Integer id){
+		String url = carpoolURL + "updateDeptTime";
+		ArrayList<NameValuePair> nvp = new ArrayList<NameValuePair>();
+		nvp.add(new BasicNameValuePair("id", id.toString()));
+		nvp.add(new BasicNameValuePair("depttime", dept));
+		
 		JSONArray ja = null;
 		JSONObject jd = null;
 		
-		ja = connect(url);
+		ja = connect(url,nvp);
 	}
 	
-	public void updateReturnTime(String ret, int id){
-		String url = carpoolURL + "?func=updateDeptTime&id=" + id + "&returntime=" + ret;
+	public void updateReturnTime(String ret, Integer id){
+		String url = carpoolURL + "/updateDeptTime";
+		ArrayList<NameValuePair> nvp = new ArrayList<NameValuePair>();
+		nvp.add(new BasicNameValuePair("id", id.toString()));
+		nvp.add(new BasicNameValuePair("returntime", ret));
+		
 		JSONArray ja = null;
 		JSONObject jd = null;
 		
-		ja = connect(url);
+		ja = connect(url,nvp);
 	}
 	
-	private JSONArray connect(String url){
+	private JSONArray connect(String url, ArrayList<NameValuePair> nvp){
 		JSONArray jArray = null;
 		String result = null;
 		InputStream is = null;
 		StringBuilder sb=null;
-		ArrayList<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
 		
 		
 		//http post
 		try{
 		     HttpClient httpclient = new DefaultHttpClient();
 		     HttpPost httppost = new HttpPost(url);
-		     httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+		     httppost.setEntity(new UrlEncodedFormEntity(nvp));
 		     HttpResponse response = httpclient.execute(httppost);
 		     HttpEntity entity = response.getEntity();
 		     is = entity.getContent();
@@ -395,10 +471,13 @@ public class Database {
 		        Log.e("log_tag", "Error converting result "+e.toString());
 		}
 		
+		Log.e("DBRESULTS", result);
 		//parsing data
 		try{
 			jArray = new JSONArray(result);
-		}catch(JSONException e1){}
+		}catch(JSONException e1){
+			Log.e("DBERROR", e1.toString());
+		}
 		
 		return jArray;
 	}
