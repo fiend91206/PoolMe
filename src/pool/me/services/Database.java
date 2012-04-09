@@ -22,6 +22,7 @@ import pool.me.domain.User;
 import pool.me.domain.User.CarAudio;
 
 import android.util.Log;
+import android.widget.Toast;
 
 
 /**
@@ -40,7 +41,7 @@ public class Database {
 	
 	public User getUser(String email){
 		User u = null;
-		JSONArray ja = null;
+		
 		JSONObject jd = null;
 		ArrayList<NameValuePair> nvp = new ArrayList<NameValuePair>();
 		
@@ -53,6 +54,10 @@ public class Database {
 			u.setContactNumber(jd.getInt("PhoneNumber"));
 			int[] depttime = {jd.getInt("DepartureTime")};
 			u.setDepartureTime(depttime);
+			String name = jd.getString("FirstName");
+			String em = jd.getString("Email");
+			Log.d("EMAIL", em);
+			Log.d("NAME", name);
 			u.setFirstName(jd.getString("FirstName"));
 			u.setLastName(jd.getString("LastName"));
 			
@@ -91,7 +96,7 @@ public class Database {
 	
 	public void addUser(User u){
 		String url = userURL + "/addUser";
-		JSONArray ja = null;
+		
 		JSONObject jd = null;
 		ArrayList<NameValuePair> nvp = new ArrayList<NameValuePair>();
 		
@@ -119,7 +124,7 @@ public class Database {
 		nvp.add(new BasicNameValuePair("email", email));
 		nvp.add(new BasicNameValuePair("fname", fname));
 		
-		JSONArray ja = null;
+		
 		JSONObject jd = null;
 		
 		jd = connect(url, nvp);
@@ -132,7 +137,7 @@ public class Database {
 		
 		nvp.add(new BasicNameValuePair("lname", lname));
 		
-		JSONArray ja = null;
+		
 		JSONObject jd = null;
 		
 		jd = connect(url, nvp);
@@ -145,7 +150,7 @@ public class Database {
 		
 		nvp.add(new BasicNameValuePair("pnum", pnum.toString()));
 		
-		JSONArray ja = null;
+		
 		JSONObject jd = null;
 		
 		jd = connect(url,nvp);
@@ -158,7 +163,7 @@ public class Database {
 		
 		nvp.add(new BasicNameValuePair("about", about));
 		
-		JSONArray ja = null;
+		
 		JSONObject jd = null;
 		
 		jd = connect(url,nvp);
@@ -171,7 +176,7 @@ public class Database {
 		
 		nvp.add(new BasicNameValuePair("driver", drive.toString()));
 		
-		JSONArray ja = null;
+		
 		JSONObject jd = null;
 		
 		jd = connect(url,nvp);
@@ -184,7 +189,7 @@ public class Database {
 		
 		nvp.add(new BasicNameValuePair("radiopref", radiopref));
 		
-		JSONArray ja = null;
+		
 		JSONObject jd = null;
 		
 		jd = connect(url, nvp);
@@ -197,7 +202,7 @@ public class Database {
 		
 		nvp.add(new BasicNameValuePair("oldemail", oldemail));
 		
-		JSONArray ja = null;
+		
 		JSONObject jd = null;
 		
 		jd = connect(url,nvp);
@@ -210,7 +215,7 @@ public class Database {
 		
 		nvp.add(new BasicNameValuePair("fbuname", name));
 		
-		JSONArray ja = null;
+		
 		JSONObject jd = null;
 		
 		jd = connect(url, nvp);
@@ -223,7 +228,7 @@ public class Database {
 		
 		nvp.add(new BasicNameValuePair("startloc", startloc));
 		
-		JSONArray ja = null;
+		
 		JSONObject jd = null;
 		
 		jd = connect(url,nvp);
@@ -236,7 +241,7 @@ public class Database {
 		
 		nvp.add(new BasicNameValuePair("destloc", destloc));
 		
-		JSONArray ja = null;
+		
 		JSONObject jd = null;
 		
 		jd = connect(url, nvp);
@@ -249,7 +254,7 @@ public class Database {
 		
 		nvp.add(new BasicNameValuePair("starttime", starttime));
 		
-		JSONArray ja = null;
+		
 		JSONObject jd = null;
 		
 		jd = connect(url,nvp);
@@ -262,7 +267,7 @@ public class Database {
 		
 		nvp.add(new BasicNameValuePair("returntime", returntime));
 		
-		JSONArray ja = null;
+		
 		JSONObject jd = null;
 		
 		jd = connect(url,nvp);
@@ -275,7 +280,7 @@ public class Database {
 		
 		nvp.add(new BasicNameValuePair("pwd", pwd));
 		
-		JSONArray ja = null;
+		
 		JSONObject jd = null;
 		
 		jd = connect(url,nvp);
@@ -289,7 +294,7 @@ public class Database {
 		
 		nvp.add(new BasicNameValuePair("pwd", pwd));
 		
-		JSONArray ja = null;
+		
 		JSONObject jd = null;
 		
 		jd = connect(url,nvp);
@@ -306,7 +311,7 @@ public class Database {
 	
 	public Carpool getPool(Integer id){
 		Carpool cp = new Carpool();
-		JSONArray ja = null;
+		
 		JSONObject jd = null;
 
 		ArrayList<NameValuePair> nvp = new ArrayList<NameValuePair>();
@@ -333,7 +338,7 @@ public class Database {
 	}
 	
 	public void addPool(Carpool cp){
-		JSONArray ja = null;
+		
 		JSONObject jd = null;
 		
 		String url = carpoolURL + "/getNumPools";
@@ -363,7 +368,7 @@ public class Database {
 		nvp.add(new BasicNameValuePair("id", newid.toString()));
 		nvp.add(new BasicNameValuePair("oldid", oldid.toString()));
 		
-		JSONArray ja = null;
+		
 		JSONObject jd = null;
 		
 		jd = connect(url,nvp);
@@ -375,7 +380,7 @@ public class Database {
 		nvp.add(new BasicNameValuePair("id", id.toString()));
 		nvp.add(new BasicNameValuePair("email", email));
 		
-		JSONArray ja = null;
+		
 		JSONObject jd = null;
 		
 		jd = connect(url,nvp);
@@ -387,7 +392,7 @@ public class Database {
 		nvp.add(new BasicNameValuePair("id", id.toString()));
 		nvp.add(new BasicNameValuePair("email", email));
 		
-		JSONArray ja = null;
+		
 		JSONObject jd = null;
 		
 		jd = connect(url,nvp);
@@ -399,7 +404,7 @@ public class Database {
 		nvp.add(new BasicNameValuePair("id", id.toString()));
 		nvp.add(new BasicNameValuePair("capacity", capacity.toString()));
 		
-		JSONArray ja = null;
+		
 		JSONObject jd = null;
 		
 		jd = connect(url,nvp);
@@ -411,7 +416,7 @@ public class Database {
 		nvp.add(new BasicNameValuePair("id", id.toString()));
 		nvp.add(new BasicNameValuePair("depttime", dept));
 		
-		JSONArray ja = null;
+		
 		JSONObject jd = null;
 		
 		jd = connect(url,nvp);
@@ -423,7 +428,7 @@ public class Database {
 		nvp.add(new BasicNameValuePair("id", id.toString()));
 		nvp.add(new BasicNameValuePair("returntime", ret));
 		
-		JSONArray ja = null;
+		
 		JSONObject jd = null;
 		
 		jd = connect(url,nvp);

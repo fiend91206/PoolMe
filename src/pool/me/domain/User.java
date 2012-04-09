@@ -54,12 +54,33 @@ public class User {
 	{
 		this.emailAddress = emailAddress;
 		this.pass = pass;
+		firstName="";
+		lastName="";
+		sourceLocation="";
+		destLocation="";
+		pools=new ArrayList<Carpool>();
+		contactNumber=-1;
+		aboutMe="";
+		picture = new Images();
+		rewardPoints = -1;
+		radioPrefs=new ArrayList<CarAudio>();
+		willingToDrive=false;
 	}
 	public User(String emailAddress, String firstName, String lastName)
 	{
 		this.emailAddress = emailAddress;
 		this.firstName = firstName;
 		this.lastName = lastName;
+		sourceLocation="";
+		destLocation="";
+		pools=new ArrayList<Carpool>();
+		contactNumber=-1;
+		aboutMe="";
+		picture = new Images();
+		rewardPoints = -1;
+		radioPrefs=new ArrayList<CarAudio>();
+		willingToDrive=false;
+		pass="";
 
 	}
 	public String getFirstName() {

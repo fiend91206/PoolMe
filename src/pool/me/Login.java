@@ -1,6 +1,7 @@
 package pool.me;
 
 import pool.me.domain.Route;
+import pool.me.domain.User;
 import pool.me.services.Database;
 import pool.me.services.Session;
 import android.app.Activity;
@@ -57,6 +58,9 @@ public class Login extends Activity implements OnClickListener{
 			
 			if(result)
 			{
+				User u = new User();
+				u = db.getUser(email);
+				Session.getInstance().setUser(u);
 				startActivity(new Intent(this, Main.class));
 				finish();
 			} else {
