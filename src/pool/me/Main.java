@@ -4,6 +4,8 @@ import pool.me.domain.Route;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageButton;
@@ -31,7 +33,14 @@ private View profile, myPool, findPool, messages, rewards, route;
         myPool.setOnClickListener(this);
         
 	}
-	
+	/*
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+	   MenuInflater inflater = getMenuInflater();
+	   inflater.inflate(R.menu.menu, menu);
+	   return true;
+	}
+	*/
 	public void onClick(View view){
 		if (view == this.profile){
 			this.startActivity(new Intent(this, Profile.class));

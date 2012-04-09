@@ -1,7 +1,4 @@
-                                                                     
-                                                                     
-                                                                     
-                                             
+                                       
 package pool.me;
 
 import java.io.FileNotFoundException;
