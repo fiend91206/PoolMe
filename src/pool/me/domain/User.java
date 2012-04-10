@@ -45,7 +45,7 @@ public class User {
 	
 	
 	/*Social Network Integration (Only Placeholders for now)*/
-	private Object facebookProfile;
+	private String facebookID;
 	
 	public User()
 	{}
@@ -197,12 +197,12 @@ public class User {
 		this.returnTime = returnTime;
 	}
 
-	public Object getFacebookProfile() {
-		return facebookProfile;
+	public String getFacebookID() {
+		return facebookID;
 	}
 
-	public void setFacebookProfile(Object facebookProfile) {
-		this.facebookProfile = facebookProfile;
+	public void setFacebookID(String facebookID) {
+		this.facebookID = facebookID;
 	}
 	public String getDestLocation() {
 		return destLocation;

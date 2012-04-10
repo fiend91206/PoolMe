@@ -60,6 +60,7 @@ public class Database {
 			Log.d("NAME", name);
 			u.setFirstName(jd.getString("FirstName"));
 			u.setLastName(jd.getString("LastName"));
+			u.setFacebookID(jd.getString("FacebookUsername"));
 			
 			//Check what radio pref enum to use based on info from database.
 			ArrayList<CarAudio> radioPrefs = new ArrayList<CarAudio>();
@@ -107,7 +108,7 @@ public class Database {
 		nvp.add(new BasicNameValuePair("driver", new Boolean(u.isWillingToDrive()).toString()));
 		nvp.add(new BasicNameValuePair("radiopref", u.getRadioPrefs().get(0).toString()));
 		nvp.add(new BasicNameValuePair("email", u.getEmailAddress()));
-		nvp.add(new BasicNameValuePair("fbuname", u.getFacebookProfile().toString()));
+		nvp.add(new BasicNameValuePair("fbuname", u.getFacebookID()));
 		nvp.add(new BasicNameValuePair("startloc", u.getSourceLocation()));
 		nvp.add(new BasicNameValuePair("destloc", u.getDestLocation()));
 		nvp.add(new BasicNameValuePair("starttime", new Integer(u.getDepartureTime()[0]).toString()));
