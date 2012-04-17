@@ -327,7 +327,7 @@ public class Database {
 		JSONObject jd = null;
 
 		ArrayList<NameValuePair> nvp = new ArrayList<NameValuePair>();
-		nvp.add(new BasicNameValuePair("email", id.toString()));
+		nvp.add(new BasicNameValuePair("id", id.toString()));
 		
 		
 		jd = connect(carpoolURL + "/getPool", nvp);
@@ -347,6 +347,70 @@ public class Database {
 		}catch(JSONException e1){}
 		
 		return cp;
+	}
+	
+	public ArrayList<Carpool> getAllPools(){
+		ArrayList<Carpool> cps = new ArrayList<Carpool>();
+		JSONArray ja = null;
+		String url = carpoolURL + "/getAllPools";
+		ArrayList<NameValuePair> nvp = new ArrayList<NameValuePair>();
+		
+		ja = connectArr(url, nvp);
+		Log.i("names", ja.toString());
+		try{
+			for (int i = 0; i < ja.length(); i++){
+				Carpool c = new Carpool();
+				c.setId(ja.getJSONObject(i).getInt("Carpool_Id"));
+				c.setCapacity(ja.getJSONObject(i).getInt("Capacity"));
+				c.setDriverEmail(ja.getJSONObject(i).getString("Owner_Email"));
+				
+				ArrayList<String> memEmail = new ArrayList<String>();
+				memEmail.add(ja.getJSONObject(i).getString("Member_Email"));
+				c.setMembersEmail(memEmail);
+				
+				c.setDeptTime(ja.getJSONObject(i).getString("DepartTime"));
+				c.setRetTime(ja.getJSONObject(i).getString("ReturnTime"));
+				cps.add(c);
+			}
+		}catch (JSONException e){
+			Log.e("JSON Error", e.toString());
+		}
+		
+		for (int i = 0; i < cps.size(); i++){
+			Log.v("cps[" + i + "]", cps.get(i).toString());
+		}
+		return cps;
+	}
+	
+	public ArrayList<Carpool> getMyPools(String email){
+		ArrayList<Carpool> cps = new ArrayList<Carpool>();
+		JSONArray ja = null;
+		String url = carpoolURL + "/getAllPools";
+		ArrayList<NameValuePair> nvp = new ArrayList<NameValuePair>();
+		
+		nvp.add(new BasicNameValuePair("email", email.toString()));
+		ja = connectArr(url, nvp);
+		
+		try{
+			for (int i = 0; i < ja.length(); i++){
+				Carpool c = new Carpool();
+				c.setId(ja.getJSONObject(i).getInt("Carpool_Id"));
+				c.setCapacity(ja.getJSONObject(i).getInt("Capacity"));
+				c.setDriverEmail(ja.getJSONObject(i).getString("Owner_Email"));
+				
+				ArrayList<String> memEmail = new ArrayList<String>();
+				memEmail.add(ja.getJSONObject(i).getString("Member_Email"));
+				c.setMembersEmail(memEmail);
+				
+				c.setDeptTime(ja.getJSONObject(i).getString("DepartTime"));
+				c.setRetTime(ja.getJSONObject(i).getString("ReturnTime"));
+				cps.add(c);
+			}
+		}catch (JSONException e){
+			Log.e("JSON Exception", e.toString());
+		}
+		
+		return cps;
 	}
 	
 	public void addPool(Carpool cp){
@@ -494,6 +558,53 @@ public class Database {
 		}
 				
 		return jo;
+	}
+	
+	private JSONArray connectArr(String url, ArrayList<NameValuePair> nvp){
+		JSONArray jArray = null;
+		JSONObject jo = null;
+		String result = null;
+		InputStream is = null;
+		StringBuilder sb=null;
+		
+		
+		//http post
+		try{
+		     HttpClient httpclient = new DefaultHttpClient();
+		     HttpPost httppost = new HttpPost(url);
+		     httppost.setEntity(new UrlEncodedFormEntity(nvp));
+		     HttpResponse response = httpclient.execute(httppost);
+		     HttpEntity entity = response.getEntity();
+		     is = entity.getContent();
+		}catch(Exception e){
+		     Log.e("log_tag", "Error in http connection"+e.toString());
+		}
+		
+		//convert response to string
+		try{
+			BufferedReader reader = new BufferedReader(new InputStreamReader(is, "iso-8859-1"), 8);
+		    sb = new StringBuilder();
+		    sb.append(reader.readLine() + "\n");
+
+		    String line="0";
+		    while ((line = reader.readLine()) != null) {
+		    	sb.append(line + "\n");
+		    }
+		        is.close();
+		        result=sb.toString();
+		}catch(Exception e){
+		        Log.e("log_tag", "Error converting result "+e.toString());
+		}
+		
+		Log.e("DBRESULTS", result);
+		
+		try{
+		jArray = new JSONArray(result);
+		}catch(JSONException e1){
+			Log.e("Json error", e1.toString());
+		}
+				
+		return jArray;
 	}
 
 }

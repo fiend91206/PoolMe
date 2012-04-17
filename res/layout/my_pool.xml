@@ -33,14 +33,14 @@
 	    android:id="@+id/start_addr"
 	    android:layout_width="wrap_content"
 	    android:layout_height="wrap_content"
-	    android:text="Start City"
+	    android:text="Start City: "
 	    android:textAppearance="?android:attr/textAppearanceMedium" />
 	
 	<TextView
 	    android:id="@+id/start_depart"
 	    android:layout_width="wrap_content"
 	    android:layout_height="wrap_content"
-	    android:text="Departure Time:"
+	    android:text="Departure Time: "
 	    android:textAppearance="?android:attr/textAppearanceMedium" />
 
 	<TextView
@@ -54,14 +54,14 @@
 	    android:id="@+id/end_depart"
 	    android:layout_width="wrap_content"
 	    android:layout_height="wrap_content"
-	    android:text="Departure Time:"
+	    android:text="Departure Time: "
 	    android:textAppearance="?android:attr/textAppearanceMedium" />
-	
+
 	<TextView
-	    android:id="@+id/depart_window"
+	    android:id="@+id/capacityText"
 	    android:layout_width="wrap_content"
 	    android:layout_height="wrap_content"
-	    android:text="Departure Time Window:"
+	    android:text="Capacity: "
 	    android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
