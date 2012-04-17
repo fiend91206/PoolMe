@@ -3,11 +3,13 @@ package pool.me;
 import java.util.ArrayList;
 
 import pool.me.domain.Carpool;
+import pool.me.services.Database;
 import pool.me.services.Session;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.EditText;
@@ -17,6 +19,7 @@ public class Create_Pool extends Activity implements  OnClickListener{
 	
 	private View cancelButton, addButton;
 	private Carpool c;
+	private Database db;
 	@Override
 	protected void onCreate(Bundle savedInstanceState){
 		// TODO Auto-generated method stub
@@ -26,6 +29,7 @@ public class Create_Pool extends Activity implements  OnClickListener{
 		e.setText(Session.getInstance().getUser().getSourceLocation());
 		cancelButton = findViewById(R.id.cp_cancel);
 		addButton = findViewById(R.id.cp_add);
+		db = new Database();
 		
 		cancelButton.setOnClickListener(this);
 		addButton.setOnClickListener(this);
@@ -43,7 +47,10 @@ public class Create_Pool extends Activity implements  OnClickListener{
 			ArrayList<String> arr = populateCarpool(c);
 			if((arr == null) || (arr.size()<1))
 			{
-				//TODO: Add to server code goes here
+				//Add car pool to database
+				c.addMember("empty");
+								
+				db.addPool(c);
 				Toast t = Toast.makeText(getApplicationContext(), "Carpool Posted to Server", Toast.LENGTH_SHORT);
 				t.show();
 				startActivity(new Intent(this,Main.class));

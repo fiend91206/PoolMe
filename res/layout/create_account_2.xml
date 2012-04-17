@@ -28,8 +28,22 @@
 		        android:id="@+id/stAddr"
 		        android:layout_width="fill_parent"
 		        android:layout_height="wrap_content"
-		        android:inputType="textPostalAddress" />
-		    
+		        android:inputType="textPostalAddress"
+		        android:text="123 derpinton st derpinton, ga 30303" />
+
+		    <TextView
+		        android:id="@+id/radioPrefText"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:text="Radio Preference:"
+		        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+		    <Spinner
+		        android:id="@+id/radioPrefSpin"
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:drawSelectorOnTop="true"
+        android:prompt="@string/radio_prefs" />
 	
 		    <TextView
 		        android:id="@+id/phoneText"

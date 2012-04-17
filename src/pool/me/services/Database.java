@@ -21,6 +21,7 @@ import pool.me.domain.Carpool;
 import pool.me.domain.User;
 import pool.me.domain.User.CarAudio;
 
+import android.content.Context;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -33,10 +34,15 @@ import android.widget.Toast;
  */
 public class Database {
 	private String userURL, carpoolURL;
+	private Context c;
 	
 	public Database(){
+		this(null);
+	}
+	public Database(Context con){
 		userURL = "http://m.cip.gatech.edu/developer/vegeta9000/widget/api/pool_me";
 		carpoolURL = "http://m.cip.gatech.edu/developer/vegeta9000/widget/api/pool_me";
+		c = con;
 	}
 	
 	public User getUser(String email){
@@ -52,50 +58,45 @@ public class Database {
 			u = new User(jd.getString("Email"), jd.getString("Password"));
 			u.setAboutMe(jd.getString("AboutMe"));
 			u.setContactNumber(jd.getInt("PhoneNumber"));
-			int[] depttime = {jd.getInt("DepartureTime")};
-			u.setDepartureTime(depttime);
-			String name = jd.getString("FirstName");
-			String em = jd.getString("Email");
-			Log.d("EMAIL", em);
-			Log.d("NAME", name);
+			u.setDepartureTime(jd.getString("StartTime"));
 			u.setFirstName(jd.getString("FirstName"));
 			u.setLastName(jd.getString("LastName"));
 			u.setFacebookID(jd.getString("FacebookUsername"));
+			u.setReturnTime(jd.getString("ReturnTime"));
+			u.setSourceLocation(jd.getString("StartLocation"));
+			u.setDestLocation(jd.getString("DestLocation"));
+			u.setWillingToDrive(jd.getBoolean("Driver"));
 			
 			//Check what radio pref enum to use based on info from database.
-			ArrayList<CarAudio> radioPrefs = new ArrayList<CarAudio>();
+			String radioPrefs = "";
 			String rp = jd.getString("RadioPrefs");
 			if (rp.compareToIgnoreCase("SILENCE") == 0 ){
-				radioPrefs.add(User.CarAudio.SILENCE);
+				radioPrefs = "Silence";
 			}else if (rp.compareToIgnoreCase("ROCK") == 0){
-				radioPrefs.add(User.CarAudio.ROCK);
+				radioPrefs = "ROCK";
 			}else if (rp.compareToIgnoreCase("CLASSICAL") == 0){
-				radioPrefs.add(User.CarAudio.CLASSICAL);
+				radioPrefs = "CLASSICAL";
 			}else if (rp.compareToIgnoreCase("POP") == 0){
-				radioPrefs.add(User.CarAudio.POP);
+				radioPrefs = "POP";
 			}else if (rp.compareToIgnoreCase("RAP") == 0){
-				radioPrefs.add(User.CarAudio.RAP);
+				radioPrefs = "RAP";
 			}else if (rp.compareToIgnoreCase("NEWS") == 0){
-				radioPrefs.add(User.CarAudio.NEWS);
+				radioPrefs = "NEWS";
 			}else if (rp.compareToIgnoreCase("SPORTS") == 0){
-				radioPrefs.add(User.CarAudio.SPORTS);
+				radioPrefs = "SPORTS";
 			}else if (rp.compareToIgnoreCase("CHATTING") == 0){
-				radioPrefs.add(User.CarAudio.CHATTING);
+				radioPrefs = "CHATTING";
 			}
 			u.setRadioPrefs(radioPrefs);
 			
-			int[] rettime = {jd.getInt("ReturnTime")};
-			u.setReturnTime(rettime);
-			
-			u.setSourceLocation(jd.getString("SourceLocation"));
-			u.setDestLocation(jd.getString("DestLocation"));
-			u.setWillingToDrive(jd.getBoolean("Driver"));
-		}catch(JSONException e1){}
+		}catch(JSONException e1){
+			Log.e("JSON Exception", e1.toString());
+		}
 		
 		return u;
 	}
 	
-	public void addUser(User u){
+	public boolean addUser(User u){
 		String url = userURL + "/addUser";
 		
 		JSONObject jd = null;
@@ -106,16 +107,26 @@ public class Database {
 		nvp.add(new BasicNameValuePair("pnum", new Long(u.getContactNumber()).toString()));
 		nvp.add(new BasicNameValuePair("about", u.getAboutMe()));
 		nvp.add(new BasicNameValuePair("driver", new Boolean(u.isWillingToDrive()).toString()));
-		nvp.add(new BasicNameValuePair("radiopref", u.getRadioPrefs().get(0).toString()));
+		nvp.add(new BasicNameValuePair("radiopref", u.getRadioPrefs()));
 		nvp.add(new BasicNameValuePair("email", u.getEmailAddress()));
 		nvp.add(new BasicNameValuePair("fbuname", u.getFacebookID()));
 		nvp.add(new BasicNameValuePair("startloc", u.getSourceLocation()));
 		nvp.add(new BasicNameValuePair("destloc", u.getDestLocation()));
-		nvp.add(new BasicNameValuePair("starttime", new Integer(u.getDepartureTime()[0]).toString()));
-		nvp.add(new BasicNameValuePair("returntime", new Integer(u.getReturnTime()[0]).toString()));
+		nvp.add(new BasicNameValuePair("starttime", u.getDepartureTime()));
+		nvp.add(new BasicNameValuePair("returntime", u.getReturnTime()));
 		nvp.add(new BasicNameValuePair("pwd", u.getPass()));
 		
 		jd = connect(url, nvp);
+		Toast t;
+		if (jd != null){
+			t = Toast.makeText(c, "Created new user in database", Toast.LENGTH_SHORT);
+			t.show();
+			return true;
+		}else {
+			t = Toast.makeText(c, "Error creating user in databse", Toast.LENGTH_SHORT);
+			t.show();
+			return false;
+		}
 	}
 	
 	public void updateFName(String fname, String email){
@@ -349,8 +360,10 @@ public class Database {
 		
 		try{
 			cp.setId(jd.getInt("NumPools") + 1);
-			
-		}catch(JSONException e1){}
+			Log.v("num", "got num pools");
+		}catch(JSONException e1){
+			Log.e("JSON Exception", e1.toString());
+		}
 		
 		url = carpoolURL + "/addPool";
 		nvp.add(new BasicNameValuePair("id", new Integer(cp.getId()).toString()));
@@ -359,6 +372,7 @@ public class Database {
 		nvp.add(new BasicNameValuePair("capcaity", new Integer(cp.getCapacity()).toString()));
 		nvp.add(new BasicNameValuePair("depttime", cp.getDeptTime()));
 		nvp.add(new BasicNameValuePair("returntime", cp.getRetTime()));
+		
 		
 		jd = connect(url, nvp);
 	}

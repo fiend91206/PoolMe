@@ -118,6 +118,12 @@ public class Carpool {
 	}
 	
 	
+	public void addMember(String memberEmail){
+		this.membersEmail.add(memberEmail);
+	}
 	
+	public String toString(){
+		return driverEmail + ", " + membersEmail + ", " + startLocation + ", " + destLocation +", " + capacity + ", " + deptTime + ", " + retTime + ", " + id;
+	}
 	
 }

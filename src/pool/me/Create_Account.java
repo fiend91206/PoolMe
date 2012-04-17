@@ -17,7 +17,6 @@ public class Create_Account extends Activity implements OnClickListener{
 	
 	public static final int MIN_PASS_LEN = 2;
 	private View  cancelButton, nextButton;
-	
 	private User u;
 	
 	public void onCreate(Bundle savedInstanceState) {
@@ -41,13 +40,13 @@ public class Create_Account extends Activity implements OnClickListener{
 	public ArrayList<String> populateUser_first(User u)
 	{
 		
-		ArrayList<String> arr = new ArrayList<String>();
+		ArrayList<String> emptyField = new ArrayList<String>();
 		String s;
 		
 		s = ((EditText)findViewById(R.id.first_name)).getText().toString();
 		if((s.length() < 1)||(s == null))
 		{
-			arr.add("First Name");
+			emptyField.add("First Name");
 		} else {
 			u.setFirstName(s);
 		}
@@ -55,7 +54,7 @@ public class Create_Account extends Activity implements OnClickListener{
 		s = ((EditText)findViewById(R.id.last_name)).getText().toString();
 		if((s.length() < 1)||(s == null))
 		{
-			arr.add("Last Name");
+			emptyField.add("Last Name");
 		} else {
 			u.setLastName(s);
 		}
@@ -63,7 +62,7 @@ public class Create_Account extends Activity implements OnClickListener{
 		s = ((EditText)findViewById(R.id.email)).getText().toString();
 		if((s.length() < 1)||(s == null))
 		{
-			arr.add("Email");
+			emptyField.add("Email");
 		} else {
 			u.setEmailAddress(s);
 		}
@@ -74,24 +73,24 @@ public class Create_Account extends Activity implements OnClickListener{
 		
 		if (s.equals("")||pass2.equals(""))
 		{
-			arr.add("Password field is empty");
+			emptyField.add("Password field is empty");
 		}  else if(!s.equals(pass2))
 		{
-			arr.add("Password fields do not match");
+			emptyField.add("Password fields do not match");
 		} else if ((s.length()<MIN_PASS_LEN)||(pass2.length()<MIN_PASS_LEN))
 		{
-			arr.add("Password must be " + MIN_PASS_LEN + " characters long");
+			emptyField.add("Password must be " + MIN_PASS_LEN + " characters long");
 		}
 		else {
 			u.setPass(s);
 		}
 		
 		
-		if(arr.size() == 0)
+		if(emptyField.size() == 0)
 		{
 			return null;
 		} else {
-			return arr;
+			return emptyField;
 		}
 		
 		
@@ -108,7 +107,6 @@ public class Create_Account extends Activity implements OnClickListener{
 			
 			if(arr == null)
 			{
-				
 				startActivity(new Intent(this,Create_Account_2.class));
 			} else
 			{

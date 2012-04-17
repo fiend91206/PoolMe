@@ -30,7 +30,8 @@
 		        android:id="@+id/first_name"
 		        android:layout_width="fill_parent"
 		        android:layout_height="wrap_content"
-		        android:inputType="textPersonName" >
+		        android:inputType="textPersonName"
+		        android:text="derp" >
 		
 		        <requestFocus />
 		    </EditText>
@@ -45,7 +46,8 @@
 		        android:id="@+id/last_name"
 		        android:layout_width="fill_parent"
 		        android:layout_height="wrap_content"
-		        android:inputType="textPersonName" >
+		        android:inputType="textPersonName"
+		        android:text="derpinton" >
 		
 		        <requestFocus />
 		    </EditText>
@@ -61,7 +63,8 @@
 		        android:id="@+id/email"
 		        android:layout_width="fill_parent"
 		        android:layout_height="wrap_content"
-		        android:inputType="textEmailAddress" />
+		        android:inputType="textEmailAddress"
+		        android:text="derp@derpinton.edu" />
 		
 		    <TextView
 		        android:id="@+id/password1Text"
@@ -74,7 +77,8 @@
 		        android:id="@+id/password"
 		        android:layout_width="fill_parent"
 		        android:layout_height="wrap_content"
-		        android:inputType="textPassword" />
+		        android:inputType="textPassword"
+		        android:text="derp" />
 		
 		    <TextView
 		        android:id="@+id/textView4"
@@ -87,7 +91,8 @@
 		        android:id="@+id/passwordConfirm"
 		        android:layout_width="fill_parent"
 		        android:layout_height="wrap_content"
-		        android:inputType="textPassword" />
+		        android:inputType="textPassword"
+		        android:text="derp" />
 		    	</LinearLayout>
     </ScrollView>
 		    	<LinearLayout

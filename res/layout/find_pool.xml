@@ -11,16 +11,16 @@
 	    <Button
 	            android:id="@+id/fp_search"
 	            android:layout_width="fill_parent"
-	            android:layout_height="wrap_content"
+	            android:layout_height="50dp"
 	            
 	            android:text="Find existing Carpool" />
 	
 	        <Button
 	            android:id="@+id/fp_create"
 	            android:layout_width="fill_parent"
-	            android:layout_height="wrap_content"
+	            android:layout_height="50dp"
 	            
-	            android:text="Post a new Carpool" />	    
+	            android:text="Post a new Carpool" android:layout_marginTop="30dp"/>	    
 	
 
 </LinearLayout>

@@ -35,11 +35,11 @@ public class User {
 	private String aboutMe;
 	private Images picture;	
 	private int rewardPoints;
-	private ArrayList<CarAudio> radioPrefs; 
+	private String radioPrefs; 
 
 	private boolean willingToDrive;
 	
-	private int departureTime[], returnTime[];
+	private String departureTime, returnTime;
 	
 	
 	
@@ -63,7 +63,7 @@ public class User {
 		aboutMe="";
 		picture = new Images();
 		rewardPoints = -1;
-		radioPrefs=new ArrayList<CarAudio>();
+		radioPrefs="";
 		willingToDrive=false;
 	}
 	public User(String emailAddress, String firstName, String lastName)
@@ -78,7 +78,7 @@ public class User {
 		aboutMe="";
 		picture = new Images();
 		rewardPoints = -1;
-		radioPrefs=new ArrayList<CarAudio>();
+		radioPrefs="";
 		willingToDrive=false;
 		pass="";
 
@@ -165,11 +165,11 @@ public class User {
 		this.rewardPoints = rewardPoints;
 	}
 
-	public ArrayList<CarAudio> getRadioPrefs() {
+	public String getRadioPrefs() {
 		return radioPrefs;
 	}
 
-	public void setRadioPrefs(ArrayList<CarAudio> radioPrefs) {
+	public void setRadioPrefs(String radioPrefs) {
 		this.radioPrefs = radioPrefs;
 	}
 
@@ -181,19 +181,19 @@ public class User {
 		this.willingToDrive = willingToDrive;
 	}
 
-	public int[] getDepartureTime() {
+	public String getDepartureTime() {
 		return departureTime;
 	}
 
-	public void setDepartureTime(int[] departureTime) {
+	public void setDepartureTime(String departureTime) {
 		this.departureTime = departureTime;
 	}
 
-	public int[] getReturnTime() {
+	public String getReturnTime() {
 		return returnTime;
 	}
 
-	public void setReturnTime(int[] returnTime) {
+	public void setReturnTime(String returnTime) {
 		this.returnTime = returnTime;
 	}
 
@@ -212,6 +212,11 @@ public class User {
 		this.destLocation = destLocation;
 	}
 	
-	
+	public String toString(){
+		String s = firstName + " " + lastName + " " + emailAddress + " " + pass + " " + aboutMe + " " + 
+				willingToDrive + " " + sourceLocation + " " + destLocation + " " + contactNumber + " " + radioPrefs
+				 + " " + departureTime + " " + returnTime;
+		return s;
+	}
 
 }

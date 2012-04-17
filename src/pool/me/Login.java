@@ -7,6 +7,7 @@ import pool.me.services.Session;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.EditText;
@@ -58,14 +59,14 @@ public class Login extends Activity implements OnClickListener{
 			
 			if(result)
 			{
-				User u = new User();
-				u = db.getUser(email);
-				u.setFirstName("Tim");
-				u.setLastName("Pincumbe");
-				u.setEmailAddress("tpincumbe5@gatech.edu");
-				u.setContactNumber(5551234);
-				u.setAboutMe("Hello. I'm new here.");
-				u.setSourceLocation("Georgia Tech Student Center");
+				User u = db.getUser(email);
+				Log.i("user", u.toString());
+//				u.setFirstName("Tim");
+//				u.setLastName("Pincumbe");
+//				u.setEmailAddress("test1@test.com");
+//				u.setContactNumber(5551234);
+//				u.setAboutMe("Hello. I'm new here.");
+//				u.setSourceLocation("Georgia Tech Student Center");
 				Session.getInstance().setUser(u);
 				startActivity(new Intent(this, Main.class));
 				finish();
