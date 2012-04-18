@@ -31,7 +31,7 @@
 		        android:id="@+id/cp_start"
 		        android:layout_width="fill_parent"
 		        android:layout_height="wrap_content"
-		        android:inputType="textPersonName" >
+		        android:text="Atlanta" >
 		
 		        <requestFocus />
 		    </EditText>

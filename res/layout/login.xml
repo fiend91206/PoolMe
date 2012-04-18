@@ -38,7 +38,7 @@
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="derp@derpinton.edu">
+        android:text="georgeburdell@gatech.edu">
 
         <requestFocus />
     </AutoCompleteTextView>
@@ -57,7 +57,7 @@
         android:layout_height="wrap_content"
         android:inputType="textPassword" 
         android:layout_gravity="center"
-        android:text="derp"
+        android:text="pwd"
         />
 
     <Button

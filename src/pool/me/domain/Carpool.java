@@ -126,4 +126,14 @@ public class Carpool {
 		return driverEmail + ", " + membersEmail + ", " + startLocation + ", " + destLocation +", " + capacity + ", " + deptTime + ", " + retTime + ", " + id;
 	}
 	
+	public String getMatchString(){
+		String match = "Id: " + id + "\n";
+		match += "Start: " + startLocation + "\n";
+		match += "Dept Time: " + deptTime + "\n";
+		match += "End: " + destLocation + "\n";
+		match += "Dept Time: " + retTime + "\n";
+		match += "Capacity: " + capacity + "\n";
+		return match;
+	}
+	
 }

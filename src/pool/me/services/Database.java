@@ -339,9 +339,10 @@ public class Database {
 			ArrayList<String> memEmail = new ArrayList<String>();
 			memEmail.add(jd.getString("memberemail"));
 			cp.setMembersEmail(memEmail);
-			
-			cp.setDeptTime(jd.getString("depttime"));
-			cp.setRetTime(jd.getString("returntime"));
+			cp.setStartLocation(jd.getString("Start_City"));
+			cp.setDeptTime(jd.getString("DepartTime"));
+			cp.setDestLocation(jd.getString("End_City"));
+			cp.setRetTime(jd.getString("ReturnTime"));
 			
 //			cp.setRoute(new Route());
 		}catch(JSONException e1){}
@@ -359,18 +360,19 @@ public class Database {
 		Log.i("names", ja.toString());
 		try{
 			for (int i = 0; i < ja.length(); i++){
-				Carpool c = new Carpool();
-				c.setId(ja.getJSONObject(i).getInt("Carpool_Id"));
-				c.setCapacity(ja.getJSONObject(i).getInt("Capacity"));
-				c.setDriverEmail(ja.getJSONObject(i).getString("Owner_Email"));
+				Carpool cp = new Carpool();
+				cp.setId(ja.getJSONObject(i).getInt("Carpool_Id"));
+				cp.setCapacity(ja.getJSONObject(i).getInt("Capacity"));
+				cp.setDriverEmail(ja.getJSONObject(i).getString("Owner_Email"));
 				
 				ArrayList<String> memEmail = new ArrayList<String>();
 				memEmail.add(ja.getJSONObject(i).getString("Member_Email"));
-				c.setMembersEmail(memEmail);
-				
-				c.setDeptTime(ja.getJSONObject(i).getString("DepartTime"));
-				c.setRetTime(ja.getJSONObject(i).getString("ReturnTime"));
-				cps.add(c);
+				cp.setMembersEmail(memEmail);
+				cp.setStartLocation(ja.getJSONObject(i).getString("Start_City"));
+				cp.setDeptTime(ja.getJSONObject(i).getString("DepartTime"));
+				cp.setDestLocation(ja.getJSONObject(i).getString("End_City"));
+				cp.setRetTime(ja.getJSONObject(i).getString("ReturnTime"));
+				cps.add(cp);
 			}
 		}catch (JSONException e){
 			Log.e("JSON Error", e.toString());
@@ -385,31 +387,36 @@ public class Database {
 	public ArrayList<Carpool> getMyPools(String email){
 		ArrayList<Carpool> cps = new ArrayList<Carpool>();
 		JSONArray ja = null;
-		String url = carpoolURL + "/getAllPools";
+		String url = carpoolURL + "/getMyPools";
 		ArrayList<NameValuePair> nvp = new ArrayList<NameValuePair>();
 		
-		nvp.add(new BasicNameValuePair("email", email.toString()));
+		Log.i("email db", email);
+		nvp.add(new BasicNameValuePair("email", email));
+		
+		Log.i("nvp", nvp.toString());
 		ja = connectArr(url, nvp);
 		
-		try{
-			for (int i = 0; i < ja.length(); i++){
-				Carpool c = new Carpool();
-				c.setId(ja.getJSONObject(i).getInt("Carpool_Id"));
-				c.setCapacity(ja.getJSONObject(i).getInt("Capacity"));
-				c.setDriverEmail(ja.getJSONObject(i).getString("Owner_Email"));
-				
-				ArrayList<String> memEmail = new ArrayList<String>();
-				memEmail.add(ja.getJSONObject(i).getString("Member_Email"));
-				c.setMembersEmail(memEmail);
-				
-				c.setDeptTime(ja.getJSONObject(i).getString("DepartTime"));
-				c.setRetTime(ja.getJSONObject(i).getString("ReturnTime"));
-				cps.add(c);
+		if (ja != null){
+			try{
+				for (int i = 0; i < ja.length(); i++){
+					Carpool cp = new Carpool();
+					cp.setId(ja.getJSONObject(i).getInt("Carpool_Id"));
+					cp.setCapacity(ja.getJSONObject(i).getInt("Capacity"));
+					cp.setDriverEmail(ja.getJSONObject(i).getString("Owner_Email"));
+					
+					ArrayList<String> memEmail = new ArrayList<String>();
+					memEmail.add(ja.getJSONObject(i).getString("Member_Email"));
+					cp.setMembersEmail(memEmail);
+					cp.setStartLocation(ja.getJSONObject(i).getString("Start_City"));
+					cp.setDeptTime(ja.getJSONObject(i).getString("DepartTime"));
+					cp.setDestLocation(ja.getJSONObject(i).getString("End_City"));
+					cp.setRetTime(ja.getJSONObject(i).getString("ReturnTime"));
+					cps.add(cp);
+				}
+			}catch (JSONException e){
+				Log.e("JSON Exception", e.toString());
 			}
-		}catch (JSONException e){
-			Log.e("JSON Exception", e.toString());
 		}
-		
 		return cps;
 	}
 	
@@ -434,7 +441,9 @@ public class Database {
 		nvp.add(new BasicNameValuePair("owneremail", cp.getDriverEmail()));
 		nvp.add(new BasicNameValuePair("memberemail", cp.getMembersEmail().get(0)));
 		nvp.add(new BasicNameValuePair("capcaity", new Integer(cp.getCapacity()).toString()));
+		nvp.add(new BasicNameValuePair("start", cp.getStartLocation()));
 		nvp.add(new BasicNameValuePair("depttime", cp.getDeptTime()));
+		nvp.add(new BasicNameValuePair("end", cp.getDestLocation()));
 		nvp.add(new BasicNameValuePair("returntime", cp.getRetTime()));
 		
 		
@@ -465,8 +474,9 @@ public class Database {
 		jd = connect(url,nvp);
 	}
 	
-	public void updateMemberEmail(String email, Integer id){
-		String url = carpoolURL + "/updateMemberEmail";
+	public boolean updateMemberEmail(String email, Integer id){
+		boolean result = false;
+		String url = carpoolURL + "/updateMemEmail";
 		ArrayList<NameValuePair> nvp = new ArrayList<NameValuePair>();
 		nvp.add(new BasicNameValuePair("id", id.toString()));
 		nvp.add(new BasicNameValuePair("email", email));
@@ -475,6 +485,14 @@ public class Database {
 		JSONObject jd = null;
 		
 		jd = connect(url,nvp);
+		try {
+			if (jd.getInt("rowsAffected") == 1){
+				result = true;
+			}
+		} catch (JSONException e) {
+			Log.e("JSON Exception", e.toString());
+		}
+		return result;
 	}
 	
 	public void updateCapacity(Integer capacity, Integer id){
@@ -489,8 +507,18 @@ public class Database {
 		jd = connect(url,nvp);
 	}
 	
+	public void updateStartCity(String start, Integer id){
+		String url = carpoolURL + "/updateStartCity";
+		ArrayList<NameValuePair> nvp = new ArrayList<NameValuePair>();
+		nvp.add(new BasicNameValuePair("id", id.toString()));
+		nvp.add(new BasicNameValuePair("start", start));
+		
+		JSONObject jd = null;
+		jd = connect(url,nvp);
+	}
+	
 	public void updateDeptTime(String dept, Integer id){
-		String url = carpoolURL + "updateDeptTime";
+		String url = carpoolURL + "/updateDeptTime";
 		ArrayList<NameValuePair> nvp = new ArrayList<NameValuePair>();
 		nvp.add(new BasicNameValuePair("id", id.toString()));
 		nvp.add(new BasicNameValuePair("depttime", dept));
@@ -498,6 +526,16 @@ public class Database {
 		
 		JSONObject jd = null;
 		
+		jd = connect(url,nvp);
+	}
+	
+	public void updateEndCity(String end, Integer id){
+		String url = carpoolURL + "/updateStartCity";
+		ArrayList<NameValuePair> nvp = new ArrayList<NameValuePair>();
+		nvp.add(new BasicNameValuePair("id", id.toString()));
+		nvp.add(new BasicNameValuePair("end", end));
+		
+		JSONObject jd = null;
 		jd = connect(url,nvp);
 	}
 	
@@ -567,7 +605,7 @@ public class Database {
 		InputStream is = null;
 		StringBuilder sb=null;
 		
-		
+		Log.v("nvp", nvp.toString());
 		//http post
 		try{
 		     HttpClient httpclient = new DefaultHttpClient();
