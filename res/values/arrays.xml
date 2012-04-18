@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="radio_prefs">
+        <item>SILENCE</item>
+        <item>ROCK</item>
+        <item>CLASSICAL</item>
+        <item>POP</item>
+        <item>RAP</item>
+        <item>NEWS</item>
+        <item>SPORTS</item>
+        <item>CHATTING</item>
+    </string-array>
+</resources>
