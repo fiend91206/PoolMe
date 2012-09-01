@@ -12,10 +12,6 @@ import android.app.Activity;
 public class Route extends Activity{
 	
 	private PriorityQueue<Checkpoint> points;
-	private int route_start_index;
-	//The following two are used to determine when to start validating a carpool.
-	private int pool_start_index;
-	private int pool_end_index;
 	
 	public Route()
 	{		

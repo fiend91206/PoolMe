@@ -12,12 +12,8 @@ import pool.me.domain.User;
 import pool.me.services.Session;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
-import android.widget.Toast;
 
 import com.facebook.android.*;
 import com.facebook.android.AsyncFacebookRunner.RequestListener;
@@ -125,7 +121,8 @@ public class FB_Integration extends Activity implements DialogListener{
 }
  
  class FriendListener implements RequestListener{
-	 private Activity a;
+	 @SuppressWarnings("unused")
+	private Activity a;
 
 	public FriendListener(Activity a)
 	{

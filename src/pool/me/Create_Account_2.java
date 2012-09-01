@@ -35,7 +35,7 @@ public class Create_Account_2 extends Activity implements OnClickListener{
 		backButton = findViewById(R.id.ca_back);
 		
 		radioSpin = (Spinner) findViewById(R.id.radioPrefSpin);
-	    ArrayAdapter adapter = ArrayAdapter.createFromResource(
+	    ArrayAdapter<?> adapter = ArrayAdapter.createFromResource(
 	            this, R.array.radio_prefs, android.R.layout.simple_spinner_item);
 	    adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 	    radioSpin.setAdapter(adapter);

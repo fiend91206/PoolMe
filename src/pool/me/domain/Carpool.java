@@ -1,7 +1,6 @@
 package pool.me.domain;
 
 import java.util.ArrayList;
-import java.util.PriorityQueue;
 
 /**
  * Contains Carpool information, it's members and the route.

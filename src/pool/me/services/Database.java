@@ -19,7 +19,6 @@ import org.json.JSONObject;
 
 import pool.me.domain.Carpool;
 import pool.me.domain.User;
-import pool.me.domain.User.CarAudio;
 
 import android.content.Context;
 import android.util.Log;
@@ -104,9 +103,9 @@ public class Database {
 		
 		nvp.add(new BasicNameValuePair("fname", u.getFirstName()));
 		nvp.add(new BasicNameValuePair("lname", u.getLastName()));
-		nvp.add(new BasicNameValuePair("pnum", new Long(u.getContactNumber()).toString()));
+		nvp.add(new BasicNameValuePair("pnum", Long.valueOf(u.getContactNumber()).toString()));
 		nvp.add(new BasicNameValuePair("about", u.getAboutMe()));
-		nvp.add(new BasicNameValuePair("driver", new Boolean(u.isWillingToDrive()).toString()));
+		nvp.add(new BasicNameValuePair("driver", Boolean.valueOf(u.isWillingToDrive()).toString()));
 		nvp.add(new BasicNameValuePair("radiopref", u.getRadioPrefs()));
 		nvp.add(new BasicNameValuePair("email", u.getEmailAddress()));
 		nvp.add(new BasicNameValuePair("fbuname", u.getFacebookID()));
@@ -136,10 +135,7 @@ public class Database {
 		nvp.add(new BasicNameValuePair("email", email));
 		nvp.add(new BasicNameValuePair("fname", fname));
 		
-		
-		JSONObject jd = null;
-		
-		jd = connect(url, nvp);
+		connect(url, nvp);
 	}
 	
 	public void updateLName(String lname, String email){
@@ -149,10 +145,7 @@ public class Database {
 		
 		nvp.add(new BasicNameValuePair("lname", lname));
 		
-		
-		JSONObject jd = null;
-		
-		jd = connect(url, nvp);
+		connect(url, nvp);
 	}
 	
 	public void updatePNum(Long pnum, String email){
@@ -162,10 +155,7 @@ public class Database {
 		
 		nvp.add(new BasicNameValuePair("pnum", pnum.toString()));
 		
-		
-		JSONObject jd = null;
-		
-		jd = connect(url,nvp);
+		connect(url,nvp);
 	}
 	
 	public void updateAboutMe(String about, String email){
@@ -175,10 +165,7 @@ public class Database {
 		
 		nvp.add(new BasicNameValuePair("about", about));
 		
-		
-		JSONObject jd = null;
-		
-		jd = connect(url,nvp);
+		connect(url,nvp);
 	}
 	
 	public void updateDriver(Boolean drive, String email){
@@ -188,10 +175,7 @@ public class Database {
 		
 		nvp.add(new BasicNameValuePair("driver", drive.toString()));
 		
-		
-		JSONObject jd = null;
-		
-		jd = connect(url,nvp);
+		connect(url,nvp);
 	}
 	
 	public void updateRadioPref(String radiopref, String email){
@@ -201,10 +185,7 @@ public class Database {
 		
 		nvp.add(new BasicNameValuePair("radiopref", radiopref));
 		
-		
-		JSONObject jd = null;
-		
-		jd = connect(url, nvp);
+		connect(url, nvp);
 	}
 	
 	public void updateEmail(String email, String oldemail){
@@ -214,10 +195,7 @@ public class Database {
 		
 		nvp.add(new BasicNameValuePair("oldemail", oldemail));
 		
-		
-		JSONObject jd = null;
-		
-		jd = connect(url,nvp);
+		connect(url,nvp);
 	}
 	
 	public void updateFBName(String name, String email){
@@ -227,10 +205,7 @@ public class Database {
 		
 		nvp.add(new BasicNameValuePair("fbuname", name));
 		
-		
-		JSONObject jd = null;
-		
-		jd = connect(url, nvp);
+		connect(url, nvp);
 	}
 	
 	public void updateStartLoc(String startloc, String email){
@@ -240,10 +215,7 @@ public class Database {
 		
 		nvp.add(new BasicNameValuePair("startloc", startloc));
 		
-		
-		JSONObject jd = null;
-		
-		jd = connect(url,nvp);
+		connect(url,nvp);
 	}
 	
 	public void updateDestLoc(String destloc, String email){
@@ -253,10 +225,7 @@ public class Database {
 		
 		nvp.add(new BasicNameValuePair("destloc", destloc));
 		
-		
-		JSONObject jd = null;
-		
-		jd = connect(url, nvp);
+		connect(url, nvp);
 	}
 	
 	public void updateStartTime(String starttime, String email){
@@ -266,10 +235,7 @@ public class Database {
 		
 		nvp.add(new BasicNameValuePair("starttime", starttime));
 		
-		
-		JSONObject jd = null;
-		
-		jd = connect(url,nvp);
+		connect(url,nvp);
 	}
 	
 	public void updateReturnTime(String returntime, String email){
@@ -279,10 +245,7 @@ public class Database {
 		
 		nvp.add(new BasicNameValuePair("returntime", returntime));
 		
-		
-		JSONObject jd = null;
-		
-		jd = connect(url,nvp);
+		connect(url,nvp);
 	}
 	
 	public void updatePwd(String pwd, String email){
@@ -292,10 +255,7 @@ public class Database {
 		
 		nvp.add(new BasicNameValuePair("pwd", pwd));
 		
-		
-		JSONObject jd = null;
-		
-		jd = connect(url,nvp);
+		connect(url,nvp);
 	}
 	
 	public boolean authenticate(String email, String pwd){
@@ -313,7 +273,7 @@ public class Database {
 		
 		try{
 			auth = jd.getBoolean("auth");
-			Log.e("AUTH:", new Boolean(auth).toString());
+			Log.e("AUTH:", Boolean.valueOf(auth).toString());
 		}catch(JSONException e1){
 			Log.e("Json error", e1.toString());
 		}
@@ -437,17 +397,16 @@ public class Database {
 		}
 		
 		url = carpoolURL + "/addPool";
-		nvp.add(new BasicNameValuePair("id", new Integer(cp.getId()).toString()));
+		nvp.add(new BasicNameValuePair("id", Integer.valueOf(cp.getId()).toString()));
 		nvp.add(new BasicNameValuePair("owneremail", cp.getDriverEmail()));
 		nvp.add(new BasicNameValuePair("memberemail", cp.getMembersEmail().get(0)));
-		nvp.add(new BasicNameValuePair("capcaity", new Integer(cp.getCapacity()).toString()));
+		nvp.add(new BasicNameValuePair("capcaity", Integer.valueOf(cp.getCapacity()).toString()));
 		nvp.add(new BasicNameValuePair("start", cp.getStartLocation()));
 		nvp.add(new BasicNameValuePair("depttime", cp.getDeptTime()));
 		nvp.add(new BasicNameValuePair("end", cp.getDestLocation()));
 		nvp.add(new BasicNameValuePair("returntime", cp.getRetTime()));
 		
-		
-		jd = connect(url, nvp);
+		connect(url, nvp);
 	}
 	
 	public void updateID(Integer newid, Integer oldid){
@@ -456,10 +415,7 @@ public class Database {
 		nvp.add(new BasicNameValuePair("id", newid.toString()));
 		nvp.add(new BasicNameValuePair("oldid", oldid.toString()));
 		
-		
-		JSONObject jd = null;
-		
-		jd = connect(url,nvp);
+		connect(url,nvp);
 	}
 	
 	public void updateOwnerEmail(String email, Integer id){
@@ -468,10 +424,7 @@ public class Database {
 		nvp.add(new BasicNameValuePair("id", id.toString()));
 		nvp.add(new BasicNameValuePair("email", email));
 		
-		
-		JSONObject jd = null;
-		
-		jd = connect(url,nvp);
+		connect(url,nvp);
 	}
 	
 	public boolean updateMemberEmail(String email, Integer id){
@@ -501,10 +454,7 @@ public class Database {
 		nvp.add(new BasicNameValuePair("id", id.toString()));
 		nvp.add(new BasicNameValuePair("capacity", capacity.toString()));
 		
-		
-		JSONObject jd = null;
-		
-		jd = connect(url,nvp);
+		connect(url,nvp);
 	}
 	
 	public void updateStartCity(String start, Integer id){
@@ -513,8 +463,7 @@ public class Database {
 		nvp.add(new BasicNameValuePair("id", id.toString()));
 		nvp.add(new BasicNameValuePair("start", start));
 		
-		JSONObject jd = null;
-		jd = connect(url,nvp);
+		connect(url,nvp);
 	}
 	
 	public void updateDeptTime(String dept, Integer id){
@@ -523,10 +472,7 @@ public class Database {
 		nvp.add(new BasicNameValuePair("id", id.toString()));
 		nvp.add(new BasicNameValuePair("depttime", dept));
 		
-		
-		JSONObject jd = null;
-		
-		jd = connect(url,nvp);
+		connect(url,nvp);
 	}
 	
 	public void updateEndCity(String end, Integer id){
@@ -535,8 +481,7 @@ public class Database {
 		nvp.add(new BasicNameValuePair("id", id.toString()));
 		nvp.add(new BasicNameValuePair("end", end));
 		
-		JSONObject jd = null;
-		jd = connect(url,nvp);
+		connect(url,nvp);
 	}
 	
 	public void updateReturnTime(String ret, Integer id){
@@ -545,14 +490,10 @@ public class Database {
 		nvp.add(new BasicNameValuePair("id", id.toString()));
 		nvp.add(new BasicNameValuePair("returntime", ret));
 		
-		
-		JSONObject jd = null;
-		
-		jd = connect(url,nvp);
+		connect(url,nvp);
 	}
 	
 	private JSONObject connect(String url, ArrayList<NameValuePair> nvp){
-		JSONArray jArray = null;
 		JSONObject jo = null;
 		String result = null;
 		InputStream is = null;
@@ -600,7 +541,6 @@ public class Database {
 	
 	private JSONArray connectArr(String url, ArrayList<NameValuePair> nvp){
 		JSONArray jArray = null;
-		JSONObject jo = null;
 		String result = null;
 		InputStream is = null;
 		StringBuilder sb=null;

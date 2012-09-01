@@ -1,7 +1,5 @@
 package pool.me.services;
 
-import pool.me.domain.User;
-
 public class Authenticator {
 	
 	//To be changed soon

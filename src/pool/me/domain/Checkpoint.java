@@ -8,7 +8,7 @@ import com.google.android.maps.GeoPoint;
  * @author Shashank
  *
  */
-public class Checkpoint extends GeoPoint implements Comparable{
+public class Checkpoint extends GeoPoint implements Comparable<Checkpoint>{
 	
 	public static enum PointType  {GENERAL, POOL_START, POOL_END, PICKUP, DROPOFF, SOURCE, DESTINATION, ROUTE_POINT};
 	
@@ -40,7 +40,7 @@ public class Checkpoint extends GeoPoint implements Comparable{
 		}
 	}
 
-	public int compareTo(Object another) {
+	public int compareTo(Checkpoint another) {
 		// TODO Auto-generated method stub
 		Checkpoint c = (Checkpoint) another;
 		if(this.getOrder() < c.getOrder())

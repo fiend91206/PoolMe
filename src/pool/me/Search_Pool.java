@@ -1,12 +1,10 @@
 package pool.me;
 
 import android.app.Activity;
-import android.app.SearchableInfo;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.EditText;
 
 public class Search_Pool extends Activity implements OnClickListener{
 
@@ -30,8 +28,8 @@ public class Search_Pool extends Activity implements OnClickListener{
 		
 		if(v == searchButton)
 		{
-			String startLoc = ((EditText)findViewById(R.id.sp_start)).getText().toString();
-			String destLoc = ((EditText)findViewById(R.id.sp_dest)).getText().toString();
+//			String startLoc = ((EditText)findViewById(R.id.sp_start)).getText().toString();
+//			String destLoc = ((EditText)findViewById(R.id.sp_dest)).getText().toString();
 			
 			//Search code goes here.
 			

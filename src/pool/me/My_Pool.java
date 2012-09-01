@@ -7,7 +7,6 @@ import pool.me.domain.User;
 import pool.me.services.Database;
 import pool.me.services.Session;
 import android.app.Activity;
-import android.app.ListActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ArrayAdapter;

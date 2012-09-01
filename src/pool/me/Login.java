@@ -1,6 +1,5 @@
 package pool.me;
 
-import pool.me.domain.Route;
 import pool.me.domain.User;
 import pool.me.services.Database;
 import pool.me.services.Session;
@@ -11,7 +10,6 @@ import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.Toast;
 
 public class Login extends Activity implements OnClickListener{
@@ -23,10 +21,10 @@ public class Login extends Activity implements OnClickListener{
 		
 		db = new Database();
 		
-		if((Session.getInstance()).equals(null))
-		{
-			Session s = new Session();
-		}
+//		if((Session.getInstance()).equals(null))
+//		{
+//			Session s = new Session();
+//		}
 		
 		setContentView(R.layout.login);
 		regularLogin = findViewById(R.id.login);
